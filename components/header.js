@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const HeaderWrapper = styled.div`
-background: #FF7F11;
-margin-bottom: 1.45rem;
-overflow: hidden;
-position: relative;
-height: 20vh;
-min-height: 180px;
-text-align: right;
+    background: #C75D00;
+    margin-bottom: 1.45rem;
+    overflow: hidden;
+    position: relative;
+    height: 180px;
+    text-align: right;
 `;
 
 const HeaderContainer = styled.div`
@@ -19,10 +18,12 @@ position: relative;
 z-index: 2;
 display: flex;
 justify-content: space-between;
+color: #FFFEE5;
 `;
 
 const Nav = styled.nav`
 ul {
+    margin: 0px;
     list-style: none;
     @media(min-width: 649px) {
         display: flex;
@@ -36,7 +37,7 @@ ul {
         list-style-position: inside;
       * {
         text-decoration: none;
-        color: #fff;
+        color: #FFFEE5;
             &:hover {
                 color: #ddd;
                 cursor: pointer;

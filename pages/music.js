@@ -1,3 +1,8 @@
 export default function posts() {
-    return (<div>{'music'}</div>)
+    return (
+    <>
+    <h1>{'Recommend a song'}</h1>
+    <div>{'music'}</div>
+    </>
+    )
 }
