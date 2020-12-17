@@ -1,6 +1,6 @@
-import AsyncSelect from "react-select/async";
-import { useState } from "react";
-import styled from "styled-components";
+import AsyncSelect from 'react-select/async';
+import { useState } from 'react';
+import styled from 'styled-components';
 
 const selectMap = (songs) =>
   songs.map((song) => ({
@@ -8,10 +8,10 @@ const selectMap = (songs) =>
     label: `${song.title} - ${arrayToString(song.artists)}`,
   }));
 
-const arrayToString = (array) => array.join(", ");
+const arrayToString = (array) => array.join(', ');
 
 const optionsPromise = (input, setSongData) =>
-  fetch(`http://localhost:3000/api/spotify/search?q=${input}`)
+  fetch(`/api/spotify/search?q=${input}`)
     .then((res) => res.json())
     .then((json) => {
       setSongData(json);
@@ -34,8 +34,8 @@ export default function music() {
   return (
     <FlexContainer>
       <FlexItem>
-        <h1>{"Recommend a song"}</h1>
-        <div>{"music"}</div>
+        <h1>{'Recommend a song'}</h1>
+        <div>{'music'}</div>
         <AsyncSelect
           cache
           placeholder="Search for a Song"
