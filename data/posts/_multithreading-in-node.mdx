@@ -1,0 +1,107 @@
+---
+title: 'Node.js Worker Thread Demo with Hash Cracking'
+date: '2018-08-12'
+keywords: 'worker threads, node.js, multithreading'
+hero: ''
+---
+
+I recently learned . In the name of learning more about worker threads, I decided to node script wihch could leverage the benefit of threading.
+The main reason we would use worker threads in Node.js is to:
+
+1. Keep the event loop unblocked.
+1. Make stuff faster through parallelization.
+
+# Worker Threads at a Glance
+
+At a glance, JavaScript is single-threaded, the end. Worker threads allow 
+
+
+
+# Demo 
+
+**Follow along by cloning [my repo on Github.](https://github.com/jjroush/worker-thread-hash-cracker)**
+
+The demo scripts take in a hash and compares it to 1,000,000 6-digit passcodes. (000000 - 999999)
+
+## Background 
+
+For this Demo I needed a CPU-intensive task. I decided on creating a hash cracker. Hashing is a one-way crypto function. 
+Boiled Down: Hashing is a foundational password storage practice. It means if an attacker gets a hold of a password DB, they'll get a list of hashes and NOT the passwords themselves.
+Since hashing is one-way, a hash cracker will take a dictionary of passwords and hash each one; comparing the given hash to the computed one. While computing a single hash takes a small amount of CPU time, it adds up.
+
+_Disclaimer: This is just a demo. It is not as effecitive as other tools out there and you should not crack _
+
+## Single-Threaded Example
+[/example-scripts/single-thread-crack.js](https://github.com/jjroush/worker-thread-hash-cracker/blob/master/example-scripts/single-thread-crack.js)
+```
+
+for (let i = 0; i < passwordArray.length; i++) {
+    const hash = crypto.createHash('md5').update(passwordArray[i]).digest('hex');
+    if (hash === hashInput) {
+        match = passwordArray[i];
+    }
+} 
+```
+This is what I described in the background section written in code.
+
+If you are running this locally. Run this command in the terminal:
+
+
+`npm run single-thread-crack 992e63080ee1e47b99f42b8d64ede953`
+
+
+Then, wait.
+
+...
+
+`Passcode matching hash: 5555555`
+
+`Time taken to hash a million passcodes:: 20.871s`
+
+After around 20 seconds on my new MBP, I saw the value `5555555` for the inputed hash. This took a while, but that's not the only problem.
+
+Run the command again, but this time enter text into the terminal by line while the program is running. 
+After waiting another ~20 seconds, you should see something like this: 
+
+asdf
+Node echo: asdf
+asdf
+Node echo: asdf
+asdf
+Node echo: asdf
+fgh
+Node echo: fgh
+
+How come we didn't see this input until after all the hashing? The reason is javascript is single-threaded and the event loop was blocked. The async readline was blocked. If this was a HTTP server, it would be unresponsive. 
+
+Luckily, there is a solution!
+
+## Multi-Threaded Example
+
+You may be thinking: "Didn't you say JavaScript is single threaded?". You'd be correct. Node.js found a solution by exposing an API called thread_workers. This API exposes a worker. Each worker gets its own Javascript engine instance housed within the single Node.js process. Go more in depth.
+
+```
+for (let i = 0; i < threads; i++) {
+    promiseArray.push(
+        new Promise((resolve, reject) => {            
+            const worker = new Worker('./worker.js', {workerData: chunkedArray[i]});
+            worker.on('message', resolve);
+        })
+    )
+}
+```
+
+In the multithreaded script, we see that we will first create an array of promises containing an instance of a worker.
+
+```
+new Worker('./worker.js', {workerData: chunkedArray[i]});
+```
+https://nodejs.org/api/worker_threads.html#worker_threads_new_worker_filename_options
+The worker takes in 
+# Benefits
+
+As shown from the demo, we are able to use worker threads in Node to make cpu-intensive tasks non-blocking and speeding up by working in parallel.
+
+
+
+# TL:DR;

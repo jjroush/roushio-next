@@ -1,20 +1,42 @@
-// import { frontMatter as recipes } from "./*.mdx";
-import Link from "next/link";
+import fs from 'fs';
+import path from 'path';
 
-function PostPage() {
-  const formatPath = (p) => p.replace(/\.mdx$/, "");
+import matter from 'gray-matter';
 
+function PostPage({ posts }) {
+  const formatPath = (p) => p.replace(/\.mdx$/, '');
+  console.log(posts);
   return (
-    <ul>
-      {/* {recipes.map((recipe) => (
-        <li key={recipe.__resourcePath}>
-          <Link href={formatPath(recipe.__resourcePath)}>
-            <a>{recipe.title}</a>
-          </Link>
-        </li>
-      ))} */}
-    </ul>
+    <>
+      {posts.map((post) => (
+        <a href={`/posts/${post.slug}`}>
+          <p>{post.title}</p>
+        </a>
+      ))}
+    </>
   );
 }
 
 export default PostPage;
+
+export async function getStaticProps() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'data/posts'));
+
+  const posts = files.reduce((allPosts, postSlug) => {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), 'data/posts', postSlug),
+      'utf8'
+    );
+    const { data } = matter(source);
+
+    return [
+      {
+        ...data,
+        slug: postSlug.replace('.mdx', ''),
+      },
+      ...allPosts,
+    ];
+  }, []);
+
+  return { props: { posts } };
+}

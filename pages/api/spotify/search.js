@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       },
     }
   ).then((res) => res.json());
-  console.log(response.tracks.items[0].album.images[1]);
+  console.log(response);
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(mapToSongList(response.tracks.items)));
