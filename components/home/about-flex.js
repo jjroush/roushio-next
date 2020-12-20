@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Project } from "./project-card";
-import { projects } from "../../data/projects";
+import styled from 'styled-components';
+import { Project } from './project-card';
+import { projects } from '../../data/projects';
 
 const FlexContainer = styled.div`
   display: flex;
@@ -11,39 +11,24 @@ const FlexItem = styled.div`
   flex-basis: 0;
 `;
 
+const devYears = () => new Date().getFullYear() - 2016;
+
 export const AboutFlex = () => (
   <FlexContainer>
     <FlexItem>
-      <h1>{"Timeline"}</h1>
-      <h2>{"2020"}</h2>
-      <ul>
-        <li>{"Moved to Des Moines, Iowa."}</li>
-        <li>{"Started working as a Software Engineer at Hy-Vee fulltime."}</li>
-        <li>{"Graduated from Iowa State University."}</li>
-      </ul>
-      <h2>{"2019"}</h2>
-      <ul>
-        <li>{"Visited Ireland "}</li>
-        <li>{"Particpated in my first first hackathon."}</li>
-        <li>
-          {
-            "MIS Club President: Had the chance to connect students with professionals."
-          }
-        </li>
-      </ul>
-      <h2>{"2018"}</h2>
-      <ul>
-        <li>{"Started my internship with Hy-Vee."}</li>
-        <li>{"Particpated in my first hackathon."}</li>
-        <li>
-          {
-            "Wrote my first Node.js script which I used to scrape Nvidia's website for available products."
-          }
-        </li>
-      </ul>
+      <h1>{'About'}</h1>
+      <p>{`I'm a software engineer based out of Des Moines, Iowa 🌽..`}</p>
+      <p>
+        {`I dream in JavaScript. Node.js, React and Next.js are some of the technologies which I work with regularly.`}
+      </p>
+      <p>
+        {
+          "When I'm not at the computer, I enjoy cooking as well as brewing beer. There's a fun balance of art and science when it comes to cooking and brewing."
+        }
+      </p>
     </FlexItem>
     <FlexItem>
-      <h1>{"Projects"}</h1>
+      <h1>{'Projects'}</h1>
       {projects.map((project) => (
         <Project key={project.title} {...project} />
       ))}

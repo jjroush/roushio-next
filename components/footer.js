@@ -1,20 +1,31 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+
+const ContactMe = styled.p`
+  font-weight: bold;
+  margin: 0;
+`;
 
 const FooterWrapper = styled.div`
-  text-align: center;
   min-height: 145px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+
+  @media (max-width: 460px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const FooterItems = styled.ul`
-  @media (min-width: 460px) {
-    display: flex;
-    align-items: center;
-  }
-  padding-top: 30px;
+  display: flex;
+  align-items: center;
+
   margin-bottom: 0;
   margin-left: 0;
   padding-bottom: 30px;
+  padding-left: 0px;
   list-style: none;
   justify-content: center;
   li {
@@ -28,6 +39,16 @@ const FooterItems = styled.ul`
         color: #ddd;
       }
     }
+  }
+`;
+
+const EmailContainer = styled.address`
+  font-style: normal;
+  font-size: 20px;
+  margin-top: 15px;
+
+  @media (max-width: 460px) {
+    text-align: center;
   }
 `;
 
@@ -62,6 +83,10 @@ const footer = () => (
         </a>
       </li>
     </FooterItems>
+    <EmailContainer>
+      <ContactMe>{'Contact Me:'}</ContactMe>
+      {'jacob@roush.io'}
+    </EmailContainer>
   </FooterWrapper>
 );
 

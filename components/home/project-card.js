@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   border: 1px solid;
@@ -8,11 +8,16 @@ const StyledContainer = styled.div`
   border-color: #c9c8a3;
 `;
 
+const ANoStyle = styled.a`
+  color: inherit;
+  text-decoration: inherit;
+`;
+
 export const Project = ({ title, desc, link, image }) => (
-  <StyledContainer>
-    <a href={link} key={title}>
+  <ANoStyle href={link} key={title}>
+    <StyledContainer>
       <h3>{title}</h3>
       <p>{desc}</p>
-    </a>
-  </StyledContainer>
+    </StyledContainer>
+  </ANoStyle>
 );

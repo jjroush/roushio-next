@@ -7,17 +7,16 @@ export default function Home() {
     <>
       <Head>
         <title>roush.io</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <h1>{'Jacob Roush'}</h1>
+      <h1>{"Hey, I'm Jacob"}</h1>
       <h2>
         {
-          "I'm a software engineer who is improving the online retail experience @ Hy-Vee."
+          "I'm a software engineer who is improving the online retail experience @ "
         }
+        <a href={'https://hy-vee.com/aisles-online'}>{'Hy-Vee'}</a>
       </h2>
-      <span>
-        <h3>{'👀'}</h3>
-      </span>
+      <span></span>
       <AboutFlex />
     </>
   );
