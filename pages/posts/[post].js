@@ -1,9 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 import renderToString from 'next-mdx-remote/render-to-string';
+import matter from 'gray-matter';
+import Image from 'next/image';
 
-function Post({ renderedOutput }) {
-  return <div dangerouslySetInnerHTML={{ __html: renderedOutput }} />;
+function Post({ frontMatter, mdxContent }) {
+  return (
+    <>
+      <h1>{frontMatter.title}</h1>
+      <p>{frontMatter.date}</p>
+      {frontMatter.image && (
+        <Image src={frontMatter.image} width={1200} height={616} priority />
+      )}
+      <div dangerouslySetInnerHTML={{ __html: mdxContent }} />
+    </>
+  );
 }
 
 export default Post;
@@ -21,11 +32,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
-  const source = 'Some **mdx** text, with a component <Test />';
-  const postData = fs.readFileSync(
+  const mdx = fs.readFileSync(
     path.join(process.cwd(), 'data/posts', `${params.post}.mdx`)
   );
-  const { renderedOutput } = await renderToString(postData, {});
-  return { props: { renderedOutput } };
+  const { content, data } = matter(mdx);
+  const { renderedOutput } = await renderToString(content, {});
+  return { props: { mdxContent: renderedOutput, frontMatter: data } };
 }

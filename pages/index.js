@@ -16,7 +16,6 @@ export default function Home() {
         }
         <a href={'https://hy-vee.com/aisles-online'}>{'Hy-Vee'}</a>
       </h2>
-      <span></span>
       <AboutFlex />
     </>
   );

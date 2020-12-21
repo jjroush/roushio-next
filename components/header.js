@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Link from "next/link";
+import styled from 'styled-components';
+import Link from 'next/link';
 
 const HeaderWrapper = styled.div`
   background: #c75d00;
@@ -53,7 +53,7 @@ const Header = () => (
     <HeaderContainer>
       <h2 style={{ margin: 0 }}>
         <Link href="/">
-          <a style={{ color: "white", textDecoration: "none" }}>Home</a>
+          <a style={{ color: 'white', textDecoration: 'none' }}>Home</a>
         </Link>
       </h2>
       <Nav>
@@ -63,11 +63,11 @@ const Header = () => (
               <a>Posts</a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/music">
               <a>📻</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </Nav>
     </HeaderContainer>

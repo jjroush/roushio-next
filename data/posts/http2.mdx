@@ -2,11 +2,12 @@
 title: 'What is HTTP 2 and should I care?'
 date: '2019-07-15'
 keywords: 'http2, protocol, web performance'
+image: 'https://roush-image.s3.amazonaws.com/http2-cover.jpg'
 ---
 
-![HTTP2 80's cover](https://roush-image.s3.amazonaws.com/http2-cover.jpg)
-
 As a developer, I began looking into HTTP2 because I noticed Node.js 12.6 was implementing [native support](https://nodejs.org/api/http2.html). As I dug in, it was puzzling why people weren't making a bigger deal out of the update of the 20+ year-old HTTP 1.1 spec.
+
+---
 
 There were fewer examples than I anticipated for setting up Node.js HTTP2 which was confusing because javascript developers are always ahead of the curve. I realized HTTP2 must be the most utmost of _cutting edge_
 
@@ -47,7 +48,7 @@ Hopefully you're at least a little amped for HTTP2, even if its just 12% amped u
 1. Right click the network table header selecting `protocol`.
 1. Refresh the page.
 
-<img src ="https://roush-image.s3.amazonaws.com/http2-firefox-devtools.jpg"/>
+<img src="https://roush-image.s3.amazonaws.com/http2-firefox-devtools.jpg" />
 
 It's important to note that HTTP2 is dependent on the server hosting the resource, so if using an image CDN is without support for HTTP2, your site may support the latest and greatest stuff but images may not benefit from the speed increase.
 
@@ -58,7 +59,10 @@ Now hold up before you feel to excited for feeling ahead of the curve on this HT
 For now though, I'll just make sure I'm caught up with 2015's technology.
 
 <a href="http://www.commitstrip.com/en/2018/11/15/http-3/">
-<img src="https://roush-image.s3.amazonaws.com/http-commit-strip.jpg" alt="http3 commit strip" />
+  <img
+    src="https://roush-image.s3.amazonaws.com/http-commit-strip.jpg"
+    alt="http3 commit strip"
+  />
 </a>
 
 I swear there's a _Commit Strip_ for everything...

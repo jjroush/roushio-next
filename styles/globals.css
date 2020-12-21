@@ -9,12 +9,8 @@ body {
 
 a {
   color: #377e56;
-  /* text-decoration: none; */
 }
 
 * {
   box-sizing: border-box;
-}
-
-container {
 }
