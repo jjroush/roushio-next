@@ -21,7 +21,7 @@ export const AboutFlex = () => (
   <FlexContainer>
     <FlexItem>
       <h1>{'About'}</h1>
-      <p>{`I'm a software engineer based out of Des Moines, Iowa 🌽 who was been writing for code ${devYears()} years.`}</p>
+      <p>{`I'm based out of Des Moines, Iowa 🌽 and have been writing for code ${devYears()} years.`}</p>
       <p>
         {
           "I'm a Software Engineer at Hy-Vee where I'm improving the e-commerce experience."
