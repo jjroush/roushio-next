@@ -10,7 +10,13 @@ function Post({ frontMatter, mdxContent }) {
       <h1>{frontMatter.title}</h1>
       <p>{frontMatter.date}</p>
       {frontMatter.image && (
-        <Image src={frontMatter.image} width={1200} height={616} priority />
+        <Image
+          src={frontMatter.image}
+          width={1200}
+          height={616}
+          priority
+          quality={60}
+        />
       )}
       <div dangerouslySetInnerHTML={{ __html: mdxContent }} />
     </>
