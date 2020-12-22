@@ -3,6 +3,7 @@ import path from 'path';
 import renderToString from 'next-mdx-remote/render-to-string';
 import matter from 'gray-matter';
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 
 function Post({ frontMatter, mdxContent }) {
   return (
