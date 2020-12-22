@@ -8,7 +8,7 @@ const Gutter = styled.div`
   margin: 0 auto;
   padding-left: 8px;
   padding-right: 8px;
-  max-width: 1200px;
+  max-width: 1000px;
 `;
 
 function MyApp({ Component, pageProps }) {
