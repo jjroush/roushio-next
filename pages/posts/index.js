@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 
 const StyledA = styled.a`
   text-decoration: none;
@@ -18,6 +19,10 @@ const StyledExcerpt = styled.p`
 function PostPage({ posts }) {
   return (
     <>
+      <NextSeo
+        title="Posts - Jacob Roush"
+        description="A place to about all the cool stuff going on in software development."
+      />
       {posts.map((post) => (
         <Link href={`/posts/${post.slug}`} key={post.slug}>
           <StyledA>

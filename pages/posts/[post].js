@@ -7,6 +7,10 @@ import Image from 'next/image';
 function Post({ frontMatter, mdxContent }) {
   return (
     <>
+      <NextSeo
+        title={`${frontMatter.title} - Jacob Roush`}
+        description={frontMatter.excerpt}
+      />
       <h1>{frontMatter.title}</h1>
       <p>{frontMatter.date}</p>
       {frontMatter.image && (

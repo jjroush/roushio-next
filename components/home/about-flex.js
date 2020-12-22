@@ -3,7 +3,7 @@ import { Project } from './project-card';
 import { projects } from '../../data/projects';
 
 const FlexContainer = styled.div`
-  display: flex;
+  // display: flex;
   column-gap: 3rem;
   @media (max-width: 900px) {
     flex-direction: column;
@@ -20,21 +20,10 @@ const devYears = () => new Date().getFullYear() - 2016;
 export const AboutFlex = () => (
   <FlexContainer>
     <FlexItem>
-      <h1>{'About'}</h1>
-      <p>{`I'm based out of Des Moines, Iowa 🌽 and have been writing for code ${devYears()} years.`}</p>
+      <p>{`I'm based out of Des Moines, Iowa 🌽  and have been writing for code ${devYears()} years. I work as a Software Engineer at Hy-Vee where I'm improving the e-commerce experience.`}</p>
       <p>
         {
-          "I'm a Software Engineer at Hy-Vee where I'm improving the e-commerce experience."
-        }
-      </p>
-      <p>
-        {
-          'I dream in JavaScript. Node.js, React and Next.js are some of the technologies which I work with regularly.'
-        }
-      </p>
-      <p>
-        {
-          'Whenever I learn something cool pertaining to developing, I enjoy sharing through my blog on the site.'
+          'I dream in JavaScript. Node.js, React and Next.js are some of the technologies which I work with regularly. Whenever I learn something cool pertaining to developing, I enjoy sharing through my blog on the site.'
         }
       </p>
       <p>

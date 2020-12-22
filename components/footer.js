@@ -61,7 +61,7 @@ const footer = () => (
           href="https://www.linkedin.com/in/jjroush/"
           rel="noopener noreferrer"
         >
-          <img src="/linkedin.svg" />
+          <img src="/linkedin.svg" alt="Linkedin Logo" />
         </a>
       </li>
       <li>
@@ -70,7 +70,7 @@ const footer = () => (
           href="https://twitter.com/jacob_roush"
           rel="noopener noreferrer"
         >
-          <img src="/twitter.svg" alt="Vercel Logo" />
+          <img src="/twitter.svg" alt="Twitter Logo" />
         </a>
       </li>
       <li>
@@ -79,7 +79,7 @@ const footer = () => (
           href="https://github.com/jjroush"
           rel="noopener noreferrer"
         >
-          <img src="/github.svg" alt="Vercel Logo" />
+          <img src="/github.svg" alt="Github Logo" />
         </a>
       </li>
     </FooterItems>
