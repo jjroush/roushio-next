@@ -46,6 +46,7 @@ const EmailContainer = styled.address`
   font-style: normal;
   font-size: 20px;
   margin-top: 15px;
+  margin-bottom: 50px;
 
   @media (max-width: 460px) {
     text-align: center;
