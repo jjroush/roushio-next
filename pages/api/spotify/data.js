@@ -1,5 +1,5 @@
-import { getUserAuthorizedToken } from "../../../server/service/token";
-import { mapToArtists } from "../../../server/map/spotify-data";
+import { getUserAuthorizedToken } from '../../../server/service/token';
+import { mapToArtists } from '../../../server/map/spotify-data';
 // personalization api - get genres
 // get 3 playlist
 export default async function handler(req, res) {
@@ -17,10 +17,9 @@ export default async function handler(req, res) {
       },
     }
   ).then((res) => res.json());
-  console.log(JSON.stringify(response));
 
   res.statusCode = 200;
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader('Content-Type', 'application/json');
   res.end(
     JSON.stringify({
       topArtists: mapToArtists(topArtists),
