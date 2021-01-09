@@ -1,6 +1,7 @@
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const selectMap = (songs) =>
   songs.map((song) => ({
@@ -23,25 +24,49 @@ const optionsPromise = (input, setSongData) =>
 
 const FlexContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 714px) {
+    flex-direction: column;
+  }
+`;
+
+const RecommendFlexContainer = styled.div`
+  padding-top: 21px;
+  display: flex;
+  @media only screen and (max-width: 714px) {
+    flex-direction: column;
+  }
+`;
+
+const RecommendSongInfo = styled.div`
+  padding-left: 21px;
+  padding-right: 21px;
 `;
 
 const FlexItem = styled.div`
-  flex-grow: 1;
-  flex-basis: 0;
+  flex: 1 1 0px;
 `;
 
-export default function music({ topArtists }) {
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 200px 200px;
+  justify-content: right;
+`;
+
+const StyledButton = styled.button`
+  background-color: #555555;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 2.5rem;
+`;
+
+export default function music({ curatedPlaylists, topArtists }) {
   const [songData, setSongData] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
   return (
     <>
       <h1>{'Recommend a song'}</h1>
-      <p>
-        {
-          'Good music is good. If you know of any good music send if my way. Some ge'
-        }
-      </p>
-      <div>{'music'}</div>
+      <p>{'Good music is good. If you know of any, send if my way.'}</p>
       <AsyncSelect
         cache
         placeholder="Search for a Song"
@@ -55,32 +80,46 @@ export default function music({ topArtists }) {
         songData.map(
           (song) =>
             song.uri === selectedOption.value && (
-              <div>
-                <img src={song.image} />
-                <h2>{song.title}</h2>
-                <p>{arrayToString(song.artists)}</p>
-                <button onClick={() => {}} />
-                {song.uri}
-              </div>
+              <RecommendFlexContainer>
+                <img width={160} height={160} src={song.image} />
+                <RecommendSongInfo>
+                  <h2>{song.title}</h2>
+                  <p>{arrayToString(song.artists)}</p>
+                  <StyledButton onClick={() => {}}>{'recommend'}</StyledButton>
+                </RecommendSongInfo>
+              </RecommendFlexContainer>
             )
         )}
 
       <FlexContainer>
-        <div>
+        <FlexItem>
           <h1>{'Playlists'}</h1>
           <h2>{'I have curated'}</h2>
-        </div>
-        <div>
-          <h1>{'Artists'}</h1>
-          <h2>{'I have been listening to recently.'}</h2>
-          {topArtists.map((artist) => (
+          {curatedPlaylists.map((playlist) => (
             <div>
-              <img src={artist.image} />
-              <h2>{artist.name}</h2>
-              <p>{artist.genres.join(', ')}</p>
+              <a target="_blank" href={playlist.url} rel="noopener noreferrer">
+                <img src={playlist.image} />
+              </a>
+              <h2>{playlist.name}</h2>
+              <p>{playlist.description}</p>
             </div>
           ))}
-        </div>
+        </FlexItem>
+        <FlexItem>
+          <h1>{'Artists'}</h1>
+          <h2>{`I've been listening to recently.`}</h2>
+          <Grid>
+            {topArtists.map((artist) => (
+              <div>
+                <a target="_blank" href={artist.url} rel="noopener noreferrer">
+                  <img width={180} height={180} src={artist.image} />
+                </a>
+                <h2>{artist.name}</h2>
+                {/* <p>{artist.genres.join(', ')}</p> */}
+              </div>
+            ))}
+          </Grid>
+        </FlexItem>
       </FlexContainer>
     </>
   );
@@ -89,7 +128,7 @@ export default function music({ topArtists }) {
 export async function getStaticProps() {
   const res = await fetch('http://localhost:3000/api/spotify/data');
   const data = await res.json();
-  console.log(data);
+
   return {
     props: {
       ...data,
