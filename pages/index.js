@@ -16,7 +16,7 @@ export default function Home() {
         description="Fullstack Developer. Slinging Javascript in the land of corn (Iowa)."
       />
       <Head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <BigH1>{"Hey, I'm Jacob"}</BigH1>
       <h2>
