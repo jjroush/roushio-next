@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import * as Fathom from 'fathom-client';
+
 import '../styles/globals.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -12,6 +16,24 @@ const Gutter = styled.div`
 `;
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    Fathom.load(process.env.FATHOM_ID, {
+      includedDomains: ['roush.io'],
+    });
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+  }, []);
+
   return (
     <>
       <Header />

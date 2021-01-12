@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/mdx": "^10.0.3",
+    "fathom-client": "^3.0.0",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "next-mdx-remote": "^1.0.1",
