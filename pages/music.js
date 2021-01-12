@@ -108,7 +108,12 @@ export default function music({ curatedPlaylists, topArtists }) {
                 <RecommendSongInfo>
                   <h2>{song.title}</h2>
                   <p>{arrayToString(song.artists)}</p>
-                  <StyledButton onClick={() => addSong(song.uri)}>
+                  <StyledButton
+                    onClick={() => {
+                      addSong(song.uri);
+                      window.fathom.trackGoal('THSAWPR2', 0);
+                    }}
+                  >
                     {'Recommend'}
                   </StyledButton>
                 </RecommendSongInfo>
