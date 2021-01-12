@@ -1,7 +1,7 @@
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import { getMusicPageData } from '../server/service/spotify-data';
 
 const selectMap = (songs) =>
   songs.map((song) => ({
@@ -164,12 +164,7 @@ export default function music({ curatedPlaylists, topArtists }) {
 }
 
 export async function getStaticProps() {
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-  const res = await fetch(
-    `${protocol}://${process.env.VERCEL_URL}/api/spotify/data`
-  );
-  const data = await res.json();
-
+  const data = await getMusicPageData();
   return {
     props: {
       ...data,
