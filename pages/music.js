@@ -164,7 +164,7 @@ export default function music({ curatedPlaylists, topArtists }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/spotify/data');
+  const res = await fetch('/api/spotify/data');
   const data = await res.json();
 
   return {
