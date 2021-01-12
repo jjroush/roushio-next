@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    Fathom.load(process.env.FATHOM_ID, {
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_ID, {
       includedDomains: ['roush.io'],
     });
 
