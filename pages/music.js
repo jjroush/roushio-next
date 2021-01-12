@@ -164,7 +164,10 @@ export default function music({ curatedPlaylists, topArtists }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('/api/spotify/data');
+  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const res = await fetch(
+    `${protocol}://${process.env.VERCEL_URL}/api/spotify/data`
+  );
   const data = await res.json();
 
   return {
