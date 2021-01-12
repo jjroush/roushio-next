@@ -51,23 +51,24 @@ const Nav = styled.nav`
 const Header = () => (
   <HeaderWrapper>
     <HeaderContainer>
-      <h2 style={{ margin: 0 }}>
-        <Link href="/">
-          <a style={{ color: 'white', textDecoration: 'none' }}>Home</a>
-        </Link>
-      </h2>
+      <h2 style={{ margin: 0 }}></h2>
       <Nav>
         <ul>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
           <li>
             <Link href="/posts">
               <a>Posts</a>
             </Link>
           </li>
-          {/* <li>
+          <li>
             <Link href="/music">
-              <a>📻</a>
+              <a>Music</a>
             </Link>
-          </li> */}
+          </li>
         </ul>
       </Nav>
     </HeaderContainer>
