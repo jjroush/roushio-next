@@ -58,7 +58,7 @@ const footer = () => (
     <FooterItems>
       <li>
         <a
-          click={() => {
+          onClick={() => {
             window.fathom.trackGoal('5TPPRPMX', 0);
           }}
           target="_blank"
