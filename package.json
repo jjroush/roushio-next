@@ -23,6 +23,7 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
     "prettier": "2.2.1",
     "vercel": "^21.0.1"
   }
