@@ -23,7 +23,9 @@ export default function Home() {
         {
           "I'm a software engineer who is improving the online retail experience @ "
         }
-        <a href={'https://hy-vee.com/aisles-online'}>{'Hy-Vee'}</a>
+        <a href={'https://hy-vee.com/aisles-online'} target="_blank">
+          {'Hy-Vee'}
+        </a>
       </h2>
       <AboutFlex />
     </>
