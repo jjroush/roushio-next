@@ -16,8 +16,9 @@ export const mapToArtists = ({ items }) =>
 export const mapToPlaylist = (items) =>
   items.map((playlist) => ({
     name: playlist.name,
+    fathomId: playlist.fathomId,
     url: playlist.external_urls.spotify,
     description: playlist.description,
-    image: playlist.images[1].url,
+    image: playlist.images[0].url,
     duration: getDurationInMinutesFromTracks(playlist.tracks.items),
   }));

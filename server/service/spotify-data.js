@@ -13,12 +13,14 @@ export const getMusicPageData = async () => {
   ).then((res) => res.json());
 
   const playlist = await Promise.all(
-    curatedPlaylistIds.map(async (id) =>
+    curatedPlaylistIds.map(async ({ id, fathomId }) =>
       fetch(`https://api.spotify.com/v1/playlists/${id}`, {
         headers: {
           Authorization: `Bearer ${await getUserAuthorizedToken()}`,
         },
-      }).then((res) => res.json())
+      })
+        .then((res) => res.json())
+        .then((data) => ({ ...data, fathomId }))
     )
   );
 

@@ -2,6 +2,12 @@ import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { getMusicPageData } from '../server/service/spotify-data';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const PageConfetti = dynamic(() => import('../components/PageConfetti'), {
+  ssr: false,
+});
 
 const selectMap = (songs) =>
   songs.map((song) => ({
@@ -22,10 +28,18 @@ const optionsPromise = (input, setSongData) =>
       return selectMap(json);
     });
 
+const PlaylistContainer = styled.div`
+width: 100%;
+
+@media only screen and (min-width: 500px) {
+  flex-direction: width: 100%;
+  }
+`;
+
 const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  @media only screen and (max-width: 714px) {
+  @media only screen and (max-width: 899px) {
     flex-direction: column;
   }
 `;
@@ -33,7 +47,7 @@ const FlexContainer = styled.div`
 const RecommendFlexContainer = styled.div`
   padding-top: 21px;
   display: flex;
-  @media only screen and (max-width: 714px) {
+  @media only screen and (max-width: 899px) {
     flex-direction: column;
   }
 `;
@@ -51,6 +65,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: right;
+  grid-gap: 40px;
 `;
 
 const StyledButton = styled.button`
@@ -74,10 +89,27 @@ const StyledButton = styled.button`
   }
 `;
 
+const PlaylistH2 = styled.h2`
+  margin-top: 6px;
+  margin-bottom: 8px;
+`;
+
+const ArtistH2 = styled.h2`
+  margin-top: 6px;
+  margin-bottom: 50px;
+  inline-block; 
+`;
+
+const PlaylistDesc = styled.p`
+  margin-top: 0px;
+  margin-bottom: 50px;
+`;
+
 export default function music({ curatedPlaylists, topArtists }) {
   const [songData, setSongData] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
+  const [confetti, setConfetti] = useState(false);
 
   const addSong = (song) => {
     fetch(`/api/spotify/recommend?uri=${song}`);
@@ -86,6 +118,15 @@ export default function music({ curatedPlaylists, topArtists }) {
 
   return (
     <>
+      <PageConfetti
+        style={{ pointerEvents: 'none' }}
+        numberOfPieces={confetti ? 500 : 0}
+        recycle={false}
+        onConfettiComplete={(confetti) => {
+          setConfetti(false);
+          confetti.reset();
+        }}
+      />
       <h1>{'Recommend a song'}</h1>
       <p>{'Good music is good. If you know of any, send if my way.'}</p>
       <AsyncSelect
@@ -111,6 +152,7 @@ export default function music({ curatedPlaylists, topArtists }) {
                   <StyledButton
                     onClick={() => {
                       addSong(song.uri);
+                      setConfetti(true);
                       window.fathom.trackGoal('THSAWPR2', 0);
                     }}
                   >
@@ -123,7 +165,7 @@ export default function music({ curatedPlaylists, topArtists }) {
 
       {isRecommended && (
         <>
-          <h3>{'✅ Thanks for the song 🎵'}</h3>
+          <h1>{'✅ Thanks for the song 🎵'}</h1>
           <StyledButton
             onClick={() => {
               setIsRecommended(false);
@@ -137,28 +179,40 @@ export default function music({ curatedPlaylists, topArtists }) {
 
       <FlexContainer>
         <FlexItem>
-          <h1>{'Playlists'}</h1>
-          <h2>{'I have curated'}</h2>
+          <h1>{'Curated Playlists'}</h1>
           {curatedPlaylists.map((playlist) => (
-            <div key={playlist.url}>
+            <PlaylistContainer
+              key={playlist.url}
+              onClick={() => window.fathom.trackGoal(playlist.fathomId, 0)}
+            >
               <a target="_blank" href={playlist.url} rel="noopener noreferrer">
-                <img src={playlist.image} />
+                <Image
+                  width={415}
+                  height={415}
+                  src={playlist.image}
+                  layout="intrinsic"
+                  quality={100}
+                />
               </a>
-              <h2>{playlist.name}</h2>
-              <p>{playlist.description}</p>
-            </div>
+              <PlaylistH2>{playlist.name}</PlaylistH2>
+              <PlaylistDesc>{playlist.description}</PlaylistDesc>
+            </PlaylistContainer>
           ))}
         </FlexItem>
         <FlexItem>
-          <h1>{'Artists'}</h1>
-          <h2>{`I've been listening to recently.`}</h2>
+          <h1>{'Artists on Repeat'}</h1>
           <Grid>
             {topArtists.map((artist) => (
               <div key={artist.url}>
                 <a target="_blank" href={artist.url} rel="noopener noreferrer">
-                  <img width={180} height={180} src={artist.image} />
+                  <Image
+                    width={300}
+                    height={300}
+                    src={artist.image}
+                    quality={85}
+                  />
                 </a>
-                <h2>{artist.name}</h2>
+                <ArtistH2>{artist.name}</ArtistH2>
               </div>
             ))}
           </Grid>
