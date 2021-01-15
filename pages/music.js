@@ -128,7 +128,7 @@ export default function music({ curatedPlaylists, topArtists }) {
         }}
       />
       <h1>{'Recommend a song'}</h1>
-      <p>{'Good music is good. If you know of any, send if my way.'}</p>
+      <p>{'I love good music.'}</p>
       <AsyncSelect
         cache
         placeholder="Search for a Song"
