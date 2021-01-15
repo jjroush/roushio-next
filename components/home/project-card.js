@@ -14,7 +14,14 @@ const ANoStyle = styled.a`
 `;
 
 export const Project = ({ title, desc, link, image }) => (
-  <ANoStyle href={link} key={title}>
+  <ANoStyle
+    href={link}
+    key={title}
+    target="_blank"
+    onClick={() => {
+      window.fathom.trackGoal('5WUFFQCT', 0);
+    }}
+  >
     <StyledContainer>
       <h3>{title}</h3>
       <p>{desc}</p>

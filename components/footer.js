@@ -58,6 +58,9 @@ const footer = () => (
     <FooterItems>
       <li>
         <a
+          click={() => {
+            window.fathom.trackGoal('5TPPRPMX', 0);
+          }}
           target="_blank"
           href="https://www.linkedin.com/in/jjroush/"
           rel="noopener noreferrer"
@@ -67,6 +70,9 @@ const footer = () => (
       </li>
       <li>
         <a
+          onClick={() => {
+            window.fathom.trackGoal('HTW2TSTI', 0);
+          }}
           target="_blank"
           href="https://twitter.com/jacob_roush"
           rel="noopener noreferrer"
@@ -76,6 +82,9 @@ const footer = () => (
       </li>
       <li>
         <a
+          onClick={() => {
+            window.fathom.trackGoal('AGGZKT9H', 0);
+          }}
           target="_blank"
           href="https://github.com/jjroush"
           rel="noopener noreferrer"

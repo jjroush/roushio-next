@@ -5,7 +5,6 @@ import ReactConfetti from 'react-confetti';
 
 export default React.forwardRef((passedProps, ref) => {
   const { width, height } = useWindowSize();
-  console.log(width, height);
   return (
     <ReactConfetti width={width} height={height} {...passedProps} ref={ref} />
   );

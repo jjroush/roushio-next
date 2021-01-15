@@ -165,7 +165,7 @@ export default function music({ curatedPlaylists, topArtists }) {
 
       {isRecommended && (
         <>
-          <h1>{'✅ Thanks for the song 🎵'}</h1>
+          <h1>{'Thanks for the song 🎵'}</h1>
           <StyledButton
             onClick={() => {
               setIsRecommended(false);
@@ -185,7 +185,14 @@ export default function music({ curatedPlaylists, topArtists }) {
               key={playlist.url}
               onClick={() => window.fathom.trackGoal(playlist.fathomId, 0)}
             >
-              <a target="_blank" href={playlist.url} rel="noopener noreferrer">
+              <a
+                target="_blank"
+                href={playlist.url}
+                rel="noopener noreferrer"
+                onClick={() => {
+                  window.fathom.trackGoal('J8OISZIM', 0);
+                }}
+              >
                 <Image
                   width={415}
                   height={415}
@@ -204,7 +211,14 @@ export default function music({ curatedPlaylists, topArtists }) {
           <Grid>
             {topArtists.map((artist) => (
               <div key={artist.url}>
-                <a target="_blank" href={artist.url} rel="noopener noreferrer">
+                <a
+                  target="_blank"
+                  href={artist.url}
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    window.fathom.trackGoal('YT0R7FKR', 0);
+                  }}
+                >
                   <Image
                     width={300}
                     height={300}
