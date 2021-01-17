@@ -17,10 +17,10 @@ export const Project = ({ title, desc, link, image }) => (
   <ANoStyle
     href={link}
     key={title}
-    target="_blank"
     onClick={() => {
       window.fathom.trackGoal('5WUFFQCT', 0);
     }}
+    target="_blank"
   >
     <StyledContainer>
       <h3>{title}</h3>

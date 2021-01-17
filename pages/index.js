@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import { AboutFlex } from '../components/home/about-flex';
 import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
+
+import styles from '../styles/Home.module.css';
+import { AboutFlex } from '../components/home/about-flex';
 
 const BigH1 = styled.h1`
   font-size: 4em;
@@ -12,11 +13,11 @@ export default function Home() {
   return (
     <>
       <NextSeo
-        title="Jacob Roush - Fullstack Developer"
         description="Fullstack Developer. Slinging Javascript in the land of corn (Iowa)."
+        title="Jacob Roush - Fullstack Developer"
       />
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <BigH1>{"Hey, I'm Jacob"}</BigH1>
       <h2>

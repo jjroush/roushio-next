@@ -1,0 +1,8 @@
+{
+  "extends": "get-off-my-lawn",
+  "rules": {
+    "sort-keys": 0,
+    "get-off-my-lawn/prefer-arrow-functions": 0,
+    "react/react-in-jsx-scope": 0
+  }
+}

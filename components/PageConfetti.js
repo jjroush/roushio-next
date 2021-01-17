@@ -1,16 +1,20 @@
 import React from 'react';
-import useWindowSize from 'react-use/lib/useWindowSize';
-
+import { useWindowScroll, useWindowSize } from 'react-use';
 import ReactConfetti from 'react-confetti';
 
 export default React.forwardRef((passedProps, ref) => {
   const { width, height } = useWindowSize();
+  const { y } = useWindowScroll();
+
   return (
-    <ReactConfetti
-      width={width - 15}
-      height={height}
-      {...passedProps}
-      ref={ref}
-    />
+    <>
+      <p>{y}</p>
+      <ReactConfetti
+        height={height + y}
+        width={width - 15}
+        {...passedProps}
+        ref={ref}
+      />
+    </>
   );
 });

@@ -1,21 +1,23 @@
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { getMusicPageData } from '../server/service/spotify-data';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { NextSeo } from 'next-seo';
+
+import { getMusicPageData } from '../server/service/spotify-data';
 
 const PageConfetti = dynamic(() => import('../components/PageConfetti'), {
   ssr: false,
 });
+
+const arrayToString = (array) => array.join(', ');
 
 const selectMap = (songs) =>
   songs.map((song) => ({
     value: song.uri,
     label: `${song.title} - ${arrayToString(song.artists)}`,
   }));
-
-const arrayToString = (array) => array.join(', ');
 
 const TWENTY_FOUR_HOURS_IN_SECONDS = 86400;
 
@@ -118,25 +120,29 @@ export default function music({ curatedPlaylists, topArtists }) {
 
   return (
     <>
+      <NextSeo
+        description="Fullstack Developer. Slinging Javascript in the land of corn (Iowa)."
+        title="Jacob Roush - Fullstack Developer"
+      />
       <PageConfetti
-        style={{ pointerEvents: 'none' }}
-        numberOfPieces={confetti ? 500 : 0}
-        recycle={false}
+        numberOfPieces={confetti ? 1000 : 0}
         onConfettiComplete={(confetti) => {
           setConfetti(false);
           confetti.reset();
         }}
+        recycle={false}
+        style={{ pointerEvents: 'none' }}
       />
       <h1>{'Recommend a song'}</h1>
-      <p>{'I love good music.'}</p>
+      <p>{'Find and add a song to my spotify playlist.'}</p>
       <AsyncSelect
         cache
-        placeholder="Search for a Song"
-        loadOptions={(input) => optionsPromise(input, setSongData)}
         id="chord-type-selector"
         instanceId="chord-type-selector"
-        value={selectedOption}
+        loadOptions={(input) => optionsPromise(input, setSongData)}
         onChange={(input) => setSelectedOption(input)}
+        placeholder="Search for a Song"
+        value={selectedOption}
       />
 
       {selectedOption.value &&
@@ -145,7 +151,7 @@ export default function music({ curatedPlaylists, topArtists }) {
           (song) =>
             song.uri === selectedOption.value && (
               <RecommendFlexContainer>
-                <img width={160} height={160} src={song.image} />
+                <img height={160} src={song.image} width={160} />
                 <RecommendSongInfo>
                   <h2>{song.title}</h2>
                   <p>{arrayToString(song.artists)}</p>
@@ -186,19 +192,19 @@ export default function music({ curatedPlaylists, topArtists }) {
               onClick={() => window.fathom.trackGoal(playlist.fathomId, 0)}
             >
               <a
-                target="_blank"
                 href={playlist.url}
-                rel="noopener noreferrer"
                 onClick={() => {
                   window.fathom.trackGoal('J8OISZIM', 0);
                 }}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <Image
-                  width={415}
                   height={415}
-                  src={playlist.image}
                   layout="intrinsic"
                   quality={100}
+                  src={playlist.image}
+                  width={415}
                 />
               </a>
               <PlaylistH2>{playlist.name}</PlaylistH2>
@@ -212,18 +218,18 @@ export default function music({ curatedPlaylists, topArtists }) {
             {topArtists.map((artist) => (
               <div key={artist.url}>
                 <a
-                  target="_blank"
                   href={artist.url}
-                  rel="noopener noreferrer"
                   onClick={() => {
                     window.fathom.trackGoal('YT0R7FKR', 0);
                   }}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   <Image
-                    width={300}
                     height={300}
-                    src={artist.image}
                     quality={85}
+                    src={artist.image}
+                    width={300}
                   />
                 </a>
                 <ArtistH2>{artist.name}</ArtistH2>
@@ -238,6 +244,7 @@ export default function music({ curatedPlaylists, topArtists }) {
 
 export async function getStaticProps() {
   const data = await getMusicPageData();
+
   return {
     props: {
       ...data,

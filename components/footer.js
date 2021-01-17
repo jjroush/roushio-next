@@ -58,38 +58,38 @@ const footer = () => (
     <FooterItems>
       <li>
         <a
+          href="https://www.linkedin.com/in/jjroush/"
           onClick={() => {
             window.fathom.trackGoal('5TPPRPMX', 0);
           }}
-          target="_blank"
-          href="https://www.linkedin.com/in/jjroush/"
           rel="noopener noreferrer"
+          target="_blank"
         >
-          <img src="/linkedin.svg" alt="Linkedin Logo" />
+          <img alt="Linkedin Logo" src="/linkedin.svg" />
         </a>
       </li>
       <li>
         <a
+          href="https://twitter.com/jacob_roush"
           onClick={() => {
             window.fathom.trackGoal('HTW2TSTI', 0);
           }}
-          target="_blank"
-          href="https://twitter.com/jacob_roush"
           rel="noopener noreferrer"
+          target="_blank"
         >
-          <img src="/twitter.svg" alt="Twitter Logo" />
+          <img alt="Twitter Logo" src="/twitter.svg" />
         </a>
       </li>
       <li>
         <a
+          href="https://github.com/jjroush"
           onClick={() => {
             window.fathom.trackGoal('AGGZKT9H', 0);
           }}
-          target="_blank"
-          href="https://github.com/jjroush"
           rel="noopener noreferrer"
+          target="_blank"
         >
-          <img src="/github.svg" alt="Github Logo" />
+          <img alt="Github Logo" src="/github.svg" />
         </a>
       </li>
     </FooterItems>
