@@ -8,7 +8,6 @@ export default React.forwardRef((passedProps, ref) => {
 
   return (
     <>
-      <p>{y}</p>
       <ReactConfetti
         height={height + y}
         width={width - 15}
