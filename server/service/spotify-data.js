@@ -1,6 +1,7 @@
-import { getUserAuthorizedToken } from './token';
 import { mapToArtists, mapToPlaylist } from '../map/spotify-data';
 import { curatedPlaylistIds } from '../../data/spotify';
+
+import { getUserAuthorizedToken } from './token';
 
 export const getMusicPageData = async () => {
   const topArtists = await fetch(

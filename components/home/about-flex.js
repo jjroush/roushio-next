@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { Project } from './project-card';
+
 import { projects } from '../../data/projects';
+
+import { Project } from './project-card';
 
 const FlexContainer = styled.div`
   // display: flex;

@@ -109,16 +109,54 @@ const PlaylistDesc = styled.p`
   margin-bottom: 50px;
 `;
 
-const Input = styled.input``;
+const RecommendDesc = styled.p`
+  margin-top: 0px;
+  margin-bottom: 10px;
+`;
+
+const Input = styled.input`
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsl(0, 0%, 80%);
+  min-height: 30px;
+  border-width: 1px;
+  display: block;
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #2684ff;
+    border-color: #2684ff;
+  }
+  margin-bottom: 10px;
+`;
+
+const NoteInput = styled(Input)`
+  width: 300px;
+`;
+
+const AddNote = styled.a`
+  display: block;
+  margin-bottom: 10px;
+`;
 
 export default function music({ curatedPlaylists, topArtists }) {
   const [songData, setSongData] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
   const [confetti, setConfetti] = useState(false);
+  const [isNoteEnabled, setNoteEnabled] = useState(false);
+  const [note, setNote] = useState('');
+  const [email, setEmail] = useState('');
 
   const addSong = (song) => {
-    fetch(`/api/spotify/recommend?uri=${song}`);
+    fetch(`/api/spotify/recommend?uri=${song}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        songTitle: selectedOption.title,
+        songURI: song,
+        note,
+        email,
+      }),
+    });
     setIsRecommended(true);
   };
 
@@ -159,7 +197,26 @@ export default function music({ curatedPlaylists, topArtists }) {
                 <img height={160} src={song.image} width={160} />
                 <RecommendSongInfo>
                   <PlaylistH2>{song.title}</PlaylistH2>
-                  <PlaylistDesc>{arrayToString(song.artists)}</PlaylistDesc>
+                  <RecommendDesc>{arrayToString(song.artists)}</RecommendDesc>
+                  {!isNoteEnabled ? (
+                    <AddNote onClick={() => setNoteEnabled(true)}>
+                      {'Add Note'}
+                    </AddNote>
+                  ) : (
+                    <>
+                      <NoteInput
+                        styles={{ width: 300 }}
+                        maxLength={100}
+                        placeholder={'Note - Optional'}
+                      />
+                      <Input
+                        type="email"
+                        maxLength={30}
+                        placeholder={'Email - Optional'}
+                      />
+                    </>
+                  )}
+
                   <StyledButton
                     onClick={() => {
                       addSong(song.uri);
