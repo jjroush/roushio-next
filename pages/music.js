@@ -55,8 +55,10 @@ const RecommendFlexContainer = styled.div`
 `;
 
 const RecommendSongInfo = styled.div`
-  padding-left: 21px;
-  padding-right: 21px;
+  @media only screen and (min-width: 899px) {
+    padding-left: 21px;
+    padding-right: 21px;
+  }
 `;
 
 const FlexItem = styled.div`
@@ -107,6 +109,8 @@ const PlaylistDesc = styled.p`
   margin-bottom: 50px;
 `;
 
+const Input = styled.input``;
+
 export default function music({ curatedPlaylists, topArtists }) {
   const [songData, setSongData] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
@@ -139,6 +143,7 @@ export default function music({ curatedPlaylists, topArtists }) {
         cache
         id="chord-type-selector"
         instanceId="chord-type-selector"
+        isDisabled={isRecommended}
         loadOptions={(input) => optionsPromise(input, setSongData)}
         onChange={(input) => setSelectedOption(input)}
         placeholder="Search for a Song"
@@ -153,8 +158,8 @@ export default function music({ curatedPlaylists, topArtists }) {
               <RecommendFlexContainer>
                 <img height={160} src={song.image} width={160} />
                 <RecommendSongInfo>
-                  <h2>{song.title}</h2>
-                  <p>{arrayToString(song.artists)}</p>
+                  <PlaylistH2>{song.title}</PlaylistH2>
+                  <PlaylistDesc>{arrayToString(song.artists)}</PlaylistDesc>
                   <StyledButton
                     onClick={() => {
                       addSong(song.uri);
