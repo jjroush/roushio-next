@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { getClientCredentialToken } from '../../../server/service/token';
 import { mapToSongList } from '../../../server/map/song-search';
 
@@ -9,7 +10,7 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${await getClientCredentialToken()}`,
       },
     }
-  ).then((res) => res.json());
+  ).then((fetchResponse) => fetchResponse.json());
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -49,6 +50,7 @@ const FlexContainer = styled.div`
 const RecommendFlexContainer = styled.div`
   padding-top: 21px;
   display: flex;
+  width: 600px;
   @media only screen and (max-width: 899px) {
     flex-direction: column;
   }
@@ -109,18 +111,57 @@ const PlaylistDesc = styled.p`
   margin-bottom: 50px;
 `;
 
-const Input = styled.input``;
+const RecommendDesc = styled.p`
+  margin-top: 0px;
+  margin-bottom: 10px;
+`;
+
+const Input = styled.input`
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsl(0, 0%, 80%);
+  min-height: 30px;
+  border-width: 1px;
+  display: block;
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #2684ff;
+    border-color: #2684ff;
+  }
+  margin-bottom: 10px;
+`;
+
+const NoteInput = styled(Input)`
+  width: 300px;
+`;
+
+const AddNote = styled.a`
+  display: block;
+  margin-bottom: 10px;
+`;
+
+const addSong = (songURI, songTitle, note, email, setRecommendedHook) => {
+  console.log(note);
+  fetch(`/api/spotify/recommend?uri=${songURI}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      songTitle,
+      songURI,
+      note,
+      email,
+    }),
+  });
+  setRecommendedHook(true);
+};
 
 export default function music({ curatedPlaylists, topArtists }) {
   const [songData, setSongData] = useState();
   const [selectedOption, setSelectedOption] = useState([]);
   const [isRecommended, setIsRecommended] = useState(false);
   const [confetti, setConfetti] = useState(false);
-
-  const addSong = (song) => {
-    fetch(`/api/spotify/recommend?uri=${song}`);
-    setIsRecommended(true);
-  };
+  const [isNoteEnabled, setNoteEnabled] = useState(false);
+  const [note, setNote] = useState('');
+  const [email, setEmail] = useState('');
 
   return (
     <>
@@ -156,13 +197,45 @@ export default function music({ curatedPlaylists, topArtists }) {
           (song) =>
             song.uri === selectedOption.value && (
               <RecommendFlexContainer>
-                <img height={160} src={song.image} width={160} />
+                <img
+                  alt={`${song.title} album cover`}
+                  height={300}
+                  src={song.image}
+                  width={300}
+                />
                 <RecommendSongInfo>
                   <PlaylistH2>{song.title}</PlaylistH2>
-                  <PlaylistDesc>{arrayToString(song.artists)}</PlaylistDesc>
+                  <RecommendDesc>{arrayToString(song.artists)}</RecommendDesc>
+                  {!isNoteEnabled ? (
+                    <AddNote onClick={() => setNoteEnabled(true)}>
+                      {'Add Note'}
+                    </AddNote>
+                  ) : (
+                    <>
+                      <NoteInput
+                        maxLength={100}
+                        onChange={(e) => setNote(e.target.value)}
+                        placeholder={'Note - Optional'}
+                        styles={{ width: 300 }}
+                      />
+                      <Input
+                        maxLength={30}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder={'Email - Optional'}
+                        type="email"
+                      />
+                    </>
+                  )}
+
                   <StyledButton
                     onClick={() => {
-                      addSong(song.uri);
+                      addSong(
+                        song.uri,
+                        song.title,
+                        note,
+                        email,
+                        setIsRecommended
+                      );
                       setConfetti(true);
                       window.fathom.trackGoal('THSAWPR2', 0);
                     }}

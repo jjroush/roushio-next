@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
 
-import styles from '../styles/Home.module.css';
 import { AboutFlex } from '../components/home/about-flex';
 
 const BigH1 = styled.h1`
@@ -22,11 +21,15 @@ export default function Home() {
       <BigH1>{"Hey, I'm Jacob"}</BigH1>
       <h2>
         {
-          "I'm a software engineer who is improving the online retail experience @ "
+          "I'm a fullstack software engineer who is slinging Javascript in the land of corn."
         }
-        <a href={'https://hy-vee.com/aisles-online'} target="_blank">
+        {/* <a
+          href={'https://hy-vee.com/aisles-online'}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           {'Hy-Vee'}
-        </a>
+        </a> */}
       </h2>
       <AboutFlex />
     </>
