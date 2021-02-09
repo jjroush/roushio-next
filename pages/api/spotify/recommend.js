@@ -27,10 +27,7 @@ export default async function handler(req, res) {
           'spotify-uri': req.query.uri,
         }),
       }
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+    ).catch((error) => console.log(error));
 
     const getTracks = await fetch(`${url}`, {
       headers: {

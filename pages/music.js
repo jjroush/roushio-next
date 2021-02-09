@@ -50,7 +50,7 @@ const FlexContainer = styled.div`
 const RecommendFlexContainer = styled.div`
   padding-top: 21px;
   display: flex;
-  width: 300px;
+  width: 600px;
   @media only screen and (max-width: 899px) {
     flex-direction: column;
   }
