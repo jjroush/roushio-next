@@ -5,7 +5,7 @@ const url =
   'https://api.spotify.com/v1/playlists/7uzJXp5Hn8McnoTHEL2LsQ/tracks';
 
 export default async function handler(req, res) {
-  console.log(req.body);
+  const body = JSON.parse(req.body);
 
   if (
     req.query.uri.substring(0, 14) === 'spotify:track:' &&
@@ -21,10 +21,9 @@ export default async function handler(req, res) {
           Authorization: `Bearer ${process.env.SUPABASE_SECRET}`,
         },
         body: JSON.stringify({
-          note: 'test note',
-          email: 'test@testing.com',
-          'song-title': 'love me love me',
-          time: new Date().toISOString(),
+          note: body.note,
+          email: body.email,
+          'song-title': body.songTitle,
           'spotify-uri': req.query.uri,
         }),
       }
