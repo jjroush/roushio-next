@@ -42,6 +42,7 @@ const Nav = styled.nav`
       list-style-position: inside;
       * {
         text-decoration: none;
+        font-weight: 600;
         color: #fffee5;
         &:hover {
           color: #ddd;
