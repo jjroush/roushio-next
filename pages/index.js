@@ -23,13 +23,6 @@ export default function Home() {
         {
           "I'm a fullstack software engineer who is slinging Javascript in the land of corn."
         }
-        {/* <a
-          href={'https://hy-vee.com/aisles-online'}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {'Hy-Vee'}
-        </a> */}
       </h2>
       <AboutFlex />
     </>

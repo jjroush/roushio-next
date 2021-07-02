@@ -20,6 +20,7 @@ export const Project = ({ title, desc, link, image }) => (
     onClick={() => {
       window.fathom.trackGoal('5WUFFQCT', 0);
     }}
+    rel="noopener noreferrer"
     target="_blank"
   >
     <StyledContainer>
