@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import renderToString from 'next-mdx-remote/render-to-string';
+
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
 import matter from 'gray-matter';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
@@ -9,29 +11,30 @@ function Post({ frontMatter, mdxContent }) {
   return (
     <>
       <NextSeo
-        title={`${frontMatter.title} - Jacob Roush`}
         description={frontMatter.excerpt}
+        title={`${frontMatter.title} - Jacob Roush`}
       />
       <h1>{frontMatter.title}</h1>
       <p>{frontMatter.date}</p>
       {frontMatter.image && (
         <Image
-          src={frontMatter.image}
-          width={1200}
           height={616}
           priority
           quality={60}
+          src={frontMatter.image}
+          width={1200}
         />
       )}
-      <div dangerouslySetInnerHTML={{ __html: mdxContent }} />
+      <MDXRemote {...mdxContent} />
     </>
   );
 }
 
 export default Post;
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   const postSlugs = fs.readdirSync(path.join(process.cwd(), 'data/posts'));
+
   return {
     paths: postSlugs.map((slug) => ({
       params: {
@@ -47,6 +50,12 @@ export async function getStaticProps({ params }) {
     path.join(process.cwd(), 'data/posts', `${params.post}.mdx`)
   );
   const { content, data } = matter(mdx);
-  const { renderedOutput } = await renderToString(content, {});
-  return { props: { mdxContent: renderedOutput, frontMatter: data } };
+  const renderedOutput = await serialize(content);
+
+  return {
+    props: {
+      mdxContent: renderedOutput,
+      frontMatter: data,
+    },
+  };
 }

@@ -50,7 +50,7 @@ const FlexContainer = styled.div`
 const RecommendFlexContainer = styled.div`
   padding-top: 21px;
   display: flex;
-  width: 600px;
+  max-width: 100%;
   @media only screen and (max-width: 899px) {
     flex-direction: column;
   }
@@ -141,7 +141,6 @@ const AddNote = styled.a`
 `;
 
 const addSong = (songURI, songTitle, note, email, setRecommendedHook) => {
-  console.log(note);
   fetch(`/api/spotify/recommend?uri=${songURI}`, {
     method: 'POST',
     body: JSON.stringify({
