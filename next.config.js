@@ -7,4 +7,7 @@ module.exports = withMDX({
   images: {
     domains: ['roush-image.s3.amazonaws.com', 'mosaic.scdn.co', 'i.scdn.co'],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 });
