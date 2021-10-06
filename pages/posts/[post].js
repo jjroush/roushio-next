@@ -18,6 +18,7 @@ function Post({ frontMatter, mdxContent }) {
       <p>{frontMatter.date}</p>
       {frontMatter.image && (
         <Image
+          placeholder="blur"
           height={616}
           priority
           quality={60}
