@@ -10,4 +10,5 @@ module.exports = withMDX({
   eslint: {
     ignoreDuringBuilds: true,
   },
+  swcMinify: true,
 });
