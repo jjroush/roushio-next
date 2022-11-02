@@ -61,17 +61,17 @@ const Header = () => (
         <ul>
           <li>
             <Link href="/">
-              <a>{'Home'}</a>
+              {'Home'}
             </Link>
           </li>
           <li>
             <Link href="/posts">
-              <a>{'Posts'}</a>
+              {'Posts'}
             </Link>
           </li>
           <li>
             <Link href="/music">
-              <a>{'Music'}</a>
+              {'Music'}
             </Link>
           </li>
         </ul>
