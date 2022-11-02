@@ -2,7 +2,7 @@
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 

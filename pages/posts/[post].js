@@ -4,7 +4,7 @@ import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import matter from 'gray-matter';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { NextSeo } from 'next-seo';
 
 function Post({ frontMatter, mdxContent }) {
