@@ -17,23 +17,21 @@ const StyledExcerpt = styled.p`
 `;
 
 function PostPage({ posts }) {
-  return (
-    <>
-      <NextSeo
-        title="Posts - Jacob Roush"
-        description="A place to about all the cool stuff going on in software development."
-      />
-      {posts.map((post) => (
-        <Link href={`/posts/${post.slug}`} key={post.slug}>
-          <StyledA>
-            <h2>{post.title}</h2>
-            <p>{post.date}</p>
-            <StyledExcerpt>{post.excerpt}</StyledExcerpt>
-          </StyledA>
-        </Link>
-      ))}
-    </>
-  );
+  return <>
+    <NextSeo
+      title="Posts - Jacob Roush"
+      description="A place to about all the cool stuff going on in software development."
+    />
+    {posts.map((post) => (
+      <Link href={`/posts/${post.slug}`} key={post.slug} legacyBehavior>
+        <StyledA>
+          <h2>{post.title}</h2>
+          <p>{post.date}</p>
+          <StyledExcerpt>{post.excerpt}</StyledExcerpt>
+        </StyledA>
+      </Link>
+    ))}
+  </>;
 }
 
 export default PostPage;
