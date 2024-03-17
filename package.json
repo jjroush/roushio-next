@@ -13,13 +13,13 @@
     "lint": "eslint ./ --ext .js --ignore-pattern node_modules/"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
     "@next/mdx": "12.2.5",
     "fathom-client": "3.5.0",
     "gray-matter": "4.0.3",
     "next": "13.0.1",
-    "next-mdx-remote": "3.0.2",
+    "next-mdx-remote": "4.0.3",
     "next-seo": "4.28.1",
     "react": "18.2.0",
     "react-confetti": "6.1.0",

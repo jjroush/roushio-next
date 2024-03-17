@@ -22,7 +22,7 @@ const devYears = () => new Date().getFullYear() - 2016;
 export const AboutFlex = () => (
   <FlexContainer>
     <FlexItem>
-      <p>{`I'm based out of Des Moines, Iowa 🌽  and have been writing for code ${devYears()} years. I work as a Software Engineer at Hy-Vee where I'm improving the e-commerce experience.`}</p>
+      <p>{`I'm based out of Des Moines, Iowa 🌽  and have been writing code for ${devYears()} years. I work as a Software Engineer at Pella Corp where I'm leading a mobile app team.`}</p>
       <p>
         {
           'I dream in JavaScript. Node.js, React and Next.js are some of the technologies which I work with regularly. Whenever I learn something cool pertaining to developing, I enjoy sharing through my blog on the site.'
