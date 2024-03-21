@@ -78,6 +78,13 @@
   height: 1em;
 }
 
+.gutter {
+  margin: 0 auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  max-width: 1000px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
