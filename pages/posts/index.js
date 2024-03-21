@@ -1,34 +1,33 @@
 import fs from 'fs';
 import path from 'path';
+
 import matter from 'gray-matter';
-import styled from 'styled-components';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-const StyledA = styled.a`
-  text-decoration: none;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-`;
+const StyledA = {
+  textDecoration: 'none',
+  color: 'black',
+  cursor: 'pointer',
+};
 
-const StyledExcerpt = styled.p`
-  color: #282828;
-`;
+const StyledExcerpt = {
+  color: '#282828',
+}
 
 function PostPage({ posts }) {
   return <>
     <NextSeo
-      title="Posts - Jacob Roush"
       description="A place to about all the cool stuff going on in software development."
+      title="Posts - Jacob Roush"
     />
     {posts.map((post) => (
       <Link href={`/posts/${post.slug}`} key={post.slug} legacyBehavior>
-        <StyledA>
+        <div style={StyledA}>
           <h2>{post.title}</h2>
           <p>{post.date}</p>
-          <StyledExcerpt>{post.excerpt}</StyledExcerpt>
-        </StyledA>
+          <div style={StyledExcerpt}>{post.excerpt}</div>
+        </div>
       </Link>
     ))}
   </>;
