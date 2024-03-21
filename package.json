@@ -16,6 +16,8 @@
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
     "@next/mdx": "12.2.5",
+    "@nivo/core": "^0.85.1",
+    "@nivo/line": "^0.85.1",
     "fathom-client": "3.5.0",
     "gray-matter": "4.0.3",
     "next": "^14.1.4",
@@ -26,7 +28,8 @@
     "react-dom": "18.2.0",
     "react-select": "5.4.0",
     "react-use": "17.5.0",
-    "styled-components": "5.3.6"
+    "styled-components": "^6.1.8",
+    "stylis": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
