@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContactMe = styled.p`
-  font-weight: bold;
-  margin: 0;
-`;
+const ContactMe = {
+  fontWeight: 'bold',
+  margin: 0,
+};
 
 const FooterWrapper = styled.div`
   min-height: 145px;
@@ -94,7 +94,7 @@ const footer = () => (
       </li>
     </FooterItems>
     <EmailContainer>
-      <ContactMe>{'Contact Me:'}</ContactMe>
+      <div style={ContactMe}>{'Contact Me:'}</div>
       {'jacob@roush.io'}
     </EmailContainer>
   </FooterWrapper>
