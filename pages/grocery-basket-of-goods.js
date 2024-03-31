@@ -1,12 +1,23 @@
-import Head from 'next/head';
-import { NextSeo } from 'next-seo';
+import {MyResponsiveLine} from "../components/basket-of-goods/chart";
+import {getPrices} from "../server/service/prices";
 
-import { AboutFlex } from '../components/home/about-flex';
-
-
-export default function Home() {
+export default function Home({datas}) {
     return (
-        <>
-        </>
+        <div style={{height: '600px'}}>
+            <MyResponsiveLine datas={datas} />
+        </div>
     );
+}
+
+const TWENTY_FOUR_HOURS_IN_SECONDS = 86400;
+
+export async function getStaticProps() {
+    const data = await getPrices();
+
+    return {
+        props: {
+           datas: data
+        },
+        revalidate: TWENTY_FOUR_HOURS_IN_SECONDS,
+    };
 }

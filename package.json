@@ -13,6 +13,7 @@
     "lint": "eslint ./ --ext .js --ignore-pattern node_modules/"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.540.0",
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
     "@next/mdx": "12.2.5",
@@ -29,7 +30,8 @@
     "react-select": "5.4.0",
     "react-use": "17.5.0",
     "styled-components": "^6.1.8",
-    "stylis": "^4.3.1"
+    "stylis": "^4.3.1",
+    "victory-vendor": "^37.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
