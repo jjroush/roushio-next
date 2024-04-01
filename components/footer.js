@@ -1,62 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import styles from './footer.module.css';
 
 const ContactMe = {
   fontWeight: 'bold',
   margin: 0,
 };
 
-const FooterWrapper = styled.div`
-  min-height: 145px;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 30px;
-
-  @media (max-width: 460px) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`;
-
-const FooterItems = styled.ul`
-  display: flex;
-  align-items: center;
-
-  margin-bottom: 0;
-  margin-left: 0;
-  padding-bottom: 30px;
-  padding-left: 0px;
-  list-style: none;
-  justify-content: center;
-  li {
-    margin-left: 12px;
-    margin-right: 12px;
-    a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 25px;
-      &:hover {
-        color: #ddd;
-      }
-    }
-  }
-`;
-
-const EmailContainer = styled.address`
-  font-style: normal;
-  font-size: 20px;
-  margin-top: 15px;
-  margin-bottom: 50px;
-
-  @media (max-width: 460px) {
-    text-align: center;
-  }
-`;
-
 const footer = () => {
     return (
-    <FooterWrapper>
-        <FooterItems>
+        <div className={styles.FooterWrapper}>
+            <ul className={styles.FooterItems}>
             <li>
                 <a
                     href="https://www.linkedin.com/in/jjroush/"
@@ -93,12 +47,12 @@ const footer = () => {
                     <img alt="Github Logo" src="/github.svg"/>
                 </a>
             </li>
-        </FooterItems>
-        <EmailContainer>
+        </ul>
+        <div className={styles.EmailContainer}>
             <div style={ContactMe}>{'Contact Me:'}</div>
             {'hello@roush.io'}
-        </EmailContainer>
-    </FooterWrapper>
+        </div>
+    </div>
     );
 };
 

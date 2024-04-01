@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import AsyncSelect from 'react-select/async';
 import { useState } from 'react';
-import styled from 'styled-components';
 import Image from "next/legacy/image";
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
+import styles from '../styles/music.module.css'
 import { getMusicPageData } from '../server/service/spotify-data';
 
 const PageConfetti = dynamic(() => import('../components/PageConfetti'), {
@@ -30,115 +30,6 @@ const optionsPromise = (input, setSongData) =>
 
       return selectMap(json);
     });
-
-const PlaylistContainer = styled.div`
-width: 100%;
-
-@media only screen and (min-width: 500px) {
-  flex-direction: width: 100%;
-  }
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media only screen and (max-width: 899px) {
-    flex-direction: column;
-  }
-`;
-
-const RecommendFlexContainer = styled.div`
-  padding-top: 21px;
-  display: flex;
-  max-width: 100%;
-  @media only screen and (max-width: 899px) {
-    flex-direction: column;
-  }
-`;
-
-const RecommendSongInfo = styled.div`
-  @media only screen and (min-width: 899px) {
-    padding-left: 21px;
-    padding-right: 21px;
-  }
-`;
-
-const FlexItem = styled.div`
-  flex: 1 1 0px;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: right;
-  grid-gap: 40px;
-`;
-
-const StyledButton = styled.button`
-  background-color: #fffdd0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  height: 2.5rem;
-  color: #377e56;
-  border: 3px solid #377e56;
-  font-weight: 600;
-  font-size 13px
-  transition-duration: 0.4s;
-  :hover {
-    transition-duration: 0.4s;
-    background-color: #377e56;
-    color: white;
-  }
-
-  :active {
-    background-color: #2a5e41;
-  }
-`;
-
-const PlaylistH2 = styled.h2`
-  margin-top: 6px;
-  margin-bottom: 8px;
-`;
-
-const ArtistH2 = styled.h2`
-  margin-top: 6px;
-  margin-bottom: 50px;
-  inline-block; 
-`;
-
-const PlaylistDesc = styled.p`
-  margin-top: 0px;
-  margin-bottom: 50px;
-`;
-
-const RecommendDesc = styled.p`
-  margin-top: 0px;
-  margin-bottom: 10px;
-`;
-
-const Input = styled.input`
-  border-radius: 4px;
-  border-style: solid;
-  border-color: hsl(0, 0%, 80%);
-  min-height: 30px;
-  border-width: 1px;
-  display: block;
-  :focus {
-    outline: none;
-    box-shadow: 0 0 0 1px #2684ff;
-    border-color: #2684ff;
-  }
-  margin-bottom: 10px;
-`;
-
-const NoteInput = styled(Input)`
-  width: 300px;
-`;
-
-const AddNote = styled.a`
-  display: block;
-  margin-bottom: 10px;
-`;
 
 const addSong = (songURI, songTitle, note, email, setRecommendedHook) => {
   fetch(`/api/spotify/recommend?uri=${songURI}`, {
@@ -195,29 +86,31 @@ export default function music({ curatedPlaylists, topArtists }) {
         songData.map(
           (song) =>
             song.uri === selectedOption.value && (
-              <RecommendFlexContainer>
+              <div className={styles.FlexContainer}>
                 <img
                   alt={`${song.title} album cover`}
                   height={300}
                   src={song.image}
                   width={300}
                 />
-                <RecommendSongInfo>
-                  <PlaylistH2>{song.title}</PlaylistH2>
-                  <RecommendDesc>{arrayToString(song.artists)}</RecommendDesc>
+                <div className={styles.RecommendSongInfo}>
+                  <h2 className={styles.PlaylistH2}>{song.title}</h2>
+                  <p className={styles.RecommendDesc}>{arrayToString(song.artists)}</p>
                   {!isNoteEnabled ? (
-                    <AddNote onClick={() => setNoteEnabled(true)}>
+                    <a className={styles.AddNote} onClick={() => setNoteEnabled(true)}>
                       {'Add Note'}
-                    </AddNote>
+                    </a>
                   ) : (
                     <>
-                      <NoteInput
+                      <input
+                        className={`${styles.Input} ${styles.NoteInput}`}
                         maxLength={100}
                         onChange={(e) => setNote(e.target.value)}
                         placeholder={'Note - Optional'}
                         styles={{ width: 300 }}
                       />
-                      <Input
+                      <input
+                        className={`${styles.Input}`}
                         maxLength={30}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={'Email - Optional'}
@@ -226,7 +119,8 @@ export default function music({ curatedPlaylists, topArtists }) {
                     </>
                   )}
 
-                  <StyledButton
+                  <button
+                    className={styles.StyledButton}
                     onClick={() => {
                       addSong(
                         song.uri,
@@ -240,31 +134,33 @@ export default function music({ curatedPlaylists, topArtists }) {
                     }}
                   >
                     {'Recommend'}
-                  </StyledButton>
-                </RecommendSongInfo>
-              </RecommendFlexContainer>
+                  </button>
+                </div>
+              </div>
             )
         )}
 
       {isRecommended && (
         <>
           <h1>{'Thanks for the song 🎵'}</h1>
-          <StyledButton
+          <button
+            className={styles.StyledButton}
             onClick={() => {
               setIsRecommended(false);
               setSelectedOption([]);
             }}
           >
             {'Clear'}
-          </StyledButton>
+          </button>
         </>
       )}
 
-      <FlexContainer>
-        <FlexItem>
+      <div className={styles.FlexContainer}>
+        <div className={styles.FlexItem}>
           <h1>{'Curated Playlists'}</h1>
           {curatedPlaylists.map((playlist) => (
-            <PlaylistContainer
+            <div
+              className={styles.PlaylistContainer}
               key={playlist.url}
               onClick={() => window.fathom.trackGoal(playlist.fathomId, 0)}
             >
@@ -284,14 +180,14 @@ export default function music({ curatedPlaylists, topArtists }) {
                   width={415}
                 />
               </a>
-              <PlaylistH2>{playlist.name}</PlaylistH2>
-              <PlaylistDesc>{playlist.description}</PlaylistDesc>
-            </PlaylistContainer>
+              <h2 className={styles.PlaylistH2}>{playlist.name}</h2>
+              <p className={styles.PlaylistDesc}>{playlist.description}</p>
+            </div>
           ))}
-        </FlexItem>
-        <FlexItem>
+        </div>
+        <div className={styles.FlexItem}>
           <h1>{'Artists on Repeat'}</h1>
-          <Grid>
+          <div className={styles.Grid}>
             {topArtists.map((artist) => (
               <div key={artist.url}>
                 <a
@@ -309,12 +205,12 @@ export default function music({ curatedPlaylists, topArtists }) {
                     width={300}
                   />
                 </a>
-                <ArtistH2>{artist.name}</ArtistH2>
+                <h2 className={styles.ArtistH2}>{artist.name}</h2>
               </div>
             ))}
-          </Grid>
-        </FlexItem>
-      </FlexContainer>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

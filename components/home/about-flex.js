@@ -1,27 +1,13 @@
-import styled from 'styled-components';
-
+import styles from '../../styles/aboutflex.module.css';
 import { projects } from '../../data/projects';
 
 import { Project } from './project-card';
 
-const FlexContainer = styled.div`
-  // display: flex;
-  column-gap: 3rem;
-  @media (max-width: 900px) {
-    flex-direction: column;
-  }
-`;
-
-const FlexItem = styled.div`
-  flex-grow: 1;
-  flex-basis: 0;
-`;
-
 const devYears = () => new Date().getFullYear() - 2016;
 
 export const AboutFlex = () => (
-  <FlexContainer>
-    <FlexItem>
+  <div className={styles.flexContainer}>
+    <div style={{flexBasis: 0, flexGrow: 1}}>
       <p>{`I'm based out of Des Moines, Iowa 🌽  and have been writing code for ${devYears()} years. I work as a Software Engineer at Pella Corp where I'm leading a mobile app team.`}</p>
       <p>
         {
@@ -33,12 +19,12 @@ export const AboutFlex = () => (
           "When not at the computer, I enjoy cooking as well as brewing beer. There's a fun balance of art and science when it comes to cooking and brewing."
         }
       </p>
-    </FlexItem>
-    <FlexItem>
+    </div>
+    <div style={{flexBasis: 0, flexGrow: 1}}>
       <h1>{'Projects'}</h1>
       {projects.map((project) => (
         <Project key={project.title} {...project} />
       ))}
-    </FlexItem>
-  </FlexContainer>
+    </div>
+  </div>
 );

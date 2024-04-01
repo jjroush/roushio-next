@@ -1,0 +1,9 @@
+.flexContainer {
+    column-gap: 3rem;
+}
+
+@media (max-width: 900px) {
+    .flexContainer {
+        flex-direction: column;
+    }
+}

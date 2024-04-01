@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as Fathom from 'fathom-client';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import '../styles/globals.css';
 import Header from '../components/header';
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
       <div className={styles.gutter}>
         <div className={styles.container}>
           <Component {...pageProps} />
+          <SpeedInsights />
         </div>
         <Footer />
       </div>
