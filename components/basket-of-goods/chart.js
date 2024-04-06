@@ -1,10 +1,19 @@
+'client'
 import dynamic from "next/dynamic";
+
+import { useWindowSize } from "@uidotdev/usehooks";
 
 const ResponsiveLine = dynamic(() => import("@nivo/line").then(m => m.ResponsiveLine), { ssr: false });
 
 
 export const MyResponsiveLine = ({datas}) => {
-const valuesToShow = datas[0].data.map(item => item.x).map((v,i)=>i % 2 === 0  ?  '' : v);
+    const size = useWindowSize();
+
+    const isMobile = size.width < 500;
+
+    const everyNthTick = isMobile ? 3 : 2;
+
+    const valuesToShow = datas[0].data.map(item => item.x).map((v,i)=> i % everyNthTick !== 0  ?  '' : v);
 
     return (
         <ResponsiveLine
@@ -16,12 +25,10 @@ const valuesToShow = datas[0].data.map(item => item.x).map((v,i)=>i % 2 === 0  ?
                 format: v => valuesToShow.find(vts => vts === v) ? v : "",
             }}
             axisLeft={{
+                format: v => `$${v}`,
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'count',
-                legendOffset: -40,
-                legendPosition: 'middle',
                 truncateTickAt: 0
             }}
             axisRight={null}
@@ -30,11 +37,11 @@ const valuesToShow = datas[0].data.map(item => item.x).map((v,i)=>i % 2 === 0  ?
             enableTouchCrosshair
             legends={[
                 {
-                    anchor: 'bottom-right',
-                    direction: 'column',
+                    anchor: isMobile ? 'bottom' : 'bottom-right',
+                    direction: isMobile ? 'row' : 'column',
                     justify: false,
-                    translateX: 100,
-                    translateY: 0,
+                    translateX: isMobile ? 0 : 100,
+                    translateY: isMobile ? 70 : 0,
                     itemsSpacing: 0,
                     itemDirection: 'left-to-right',
                     itemWidth: 80,
@@ -54,7 +61,7 @@ const valuesToShow = datas[0].data.map(item => item.x).map((v,i)=>i % 2 === 0  ?
                     ]
                 }
             ]}
-            margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+            margin={{ top: 50, right: isMobile ? 60 : 110, bottom: 100, left: 60 }}
             pointBorderColor={{ from: 'serieColor' }}
             pointBorderWidth={2}
             pointColor={{ theme: 'background' }}
