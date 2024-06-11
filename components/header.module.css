@@ -1,5 +1,4 @@
 .HeaderWrapper {
-    background: #c75d00;
     margin-bottom: 1.45rem;
     overflow: hidden;
     position: relative;
@@ -15,7 +14,7 @@
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    color: #fffee5;
+    color: red;
 }
 
 .Nav ul {
@@ -33,8 +32,8 @@
 
 .Nav ul li * {
     text-decoration: none;
-    font-weight: 600;
-    color: #fffee5;
+    letter-spacing: 2px;
+    color: #FC421F;
 }
 
 .Nav ul li *:hover {
