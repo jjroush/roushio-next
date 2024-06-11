@@ -1,0 +1,10 @@
+.priceRow {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    flex-direction: row;
+}
+
+.card {
+    /*width: min-content;*/
+}
