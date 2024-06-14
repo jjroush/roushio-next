@@ -3,29 +3,26 @@ import Link from 'next/link';
 import styles from './header.module.css';
 
 const Header = () => (
-    <div className={styles.HeaderWrapper}>
-      <div className={styles.HeaderContainer}>
-      <h2 style={{ margin: 0 }}></h2>
+  <div className={styles.HeaderContainer}>
       <nav className={styles.Nav}>
         <ul>
           <li>
             <Link href="/">
-              {'Home'}
+              {'HOME'}
             </Link>
           </li>
           <li>
             <Link href="/posts">
-              {'Posts'}
+              {'POSTS'}
             </Link>
           </li>
           <li>
             <Link href="/music">
-              {'Music'}
+              {'MUSIC'}
             </Link>
           </li>
         </ul>
       </nav>
-    </div>
   </div>
 );
 
