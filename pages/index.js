@@ -2,8 +2,23 @@ import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
 import { AboutFlex } from '../components/home/about-flex';
+import {useEffect, useState} from "react";
 
 export default function Home() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            setMousePosition({ x: event.clientX, y: event.clientY });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
+
   return (
     <>
       <NextSeo
@@ -19,6 +34,11 @@ export default function Home() {
           "I'm a fullstack software engineer who is slinging Javascript in the land of corn."
         }
       </h2>
+        <div id="gradient"
+             style={{
+                 transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+             }}
+        ></div>
       <AboutFlex />
     </>
   );
