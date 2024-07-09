@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
+import styles from '../styles/Home.module.css';
+
+
 import { AboutFlex } from '../components/home/about-flex';
 
 export default function Home() {
@@ -13,12 +16,16 @@ export default function Home() {
       <Head>
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <h1 style={{fontSize: '4em'}}>{"Hey, I'm Jacob"}</h1>
+        <div>
+
+        </div>
+      <h1 style={{fontSize: '4em'}}>{"Jacob Roush"}</h1>
       <h2>
         {
-          "I'm a fullstack software engineer who is slinging Javascript in the land of corn."
+          "is a fullstack software engineer who is slinging Javascript in the land of corn."
         }
       </h2>
+        <div className={styles.dot}></div>
       <AboutFlex />
     </>
   );
