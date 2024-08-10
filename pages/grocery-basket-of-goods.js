@@ -4,6 +4,11 @@ import {getPrices} from "../server/service/prices";
 import styles from '../styles/grocery-cron.module.css';
 
 export default function Home({datas}) {
+    console.log('datas', datas)
+
+    const localPrice = datas[0].data[datas[0].data.length - 1].y;
+    const nationalPrice = datas[1].data[datas[1].data.length - 1].y;
+
     return (
         <div>
             <h1>{"Personal Basket of Grocery Goods"}</h1>
@@ -12,13 +17,13 @@ export default function Home({datas}) {
             <div className={styles.priceRow}>
                 <div className={styles.card}>
                     <h2 style={{display: 'inline-block'}}>{"Local Grocery Store"}</h2>
-                    <div>{"$152.45"}</div>
-                    <div>{"+3.02 (5.02%)"}</div>
+                    <div>{`$${Number(localPrice).toFixed(2)}`}</div>
+                    {/*<div>{"+3.02 (5.02%)"}</div>*/}
                 </div>
                 <div className={styles.card}>
                     <h2 style={{display: 'inline-block'}}>{"National Grocery Store"}</h2>
-                    <div>{"$142.45"}</div>
-                    <div>{"+32.00 (5.00%)"}</div>
+                    <div>{`$${Number(nationalPrice).toFixed(2)}`}</div>
+                    {/*<div>{"+32.00 (5.00%)"}</div>*/}
                     <div />
                 </div>
             </div>
@@ -26,7 +31,8 @@ export default function Home({datas}) {
             <div style={{height: '600px'}}>
                 <MyResponsiveLine datas={datas}/>
             </div>
-            <div>    As a conscious consumer, I've taken the initiative to track the prices of a carefully curated basket of goods that closely aligns with my own purchasing habits. By doing so, I aim to gain a more accurate understanding of how inflation affects my day-to-day expenses. This personalized approach allows me to compare the fluctuations in prices over time directly, offering insights into whether I'm spending more or if groceries are indeed rising in price. Through this endeavor, I hope to shed light on the economic realities faced by individuals like myself and empower others to make informed decisions about their spending habits."</div>
+            <div>Everything 'feels' more expensive when going to the grocery store. I built out a personalized basket of goods which I track daily to see how prices change over time. Consistently tracking the same items allows me to compare the fluctuations in prices over time directly, offering insights into whether I'm spending more or if groceries are indeed rising in price.</div>
+            <br/>
             <div>Items in my basket:</div>
             <ul>
                 <li>Choice Rib Eye Steak</li>

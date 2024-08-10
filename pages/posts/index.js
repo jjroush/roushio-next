@@ -49,6 +49,7 @@ export async function getStaticProps() {
       excerpt: true,
     });
 
+
     return [
       {
         ...data,
