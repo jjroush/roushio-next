@@ -2,8 +2,6 @@ import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
 import styles from '../styles/Home.module.css';
-
-
 import { AboutFlex } from '../components/home/about-flex';
 
 export default function Home() {
