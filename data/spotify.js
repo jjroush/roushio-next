@@ -7,4 +7,8 @@ export const curatedPlaylistIds = [
     id: '2QMy5ijNOBaoNSFmDX107q',
     fathomId: 'J8OISZIM',
   },
+  {
+    id: '5WjAETmDt1vmCB5ayxxYZw',
+    fathomId: '',
+  },
 ];
