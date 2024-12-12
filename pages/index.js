@@ -17,12 +17,7 @@ export default function Home() {
         <div>
 
         </div>
-      <h1 style={{fontSize: '4em'}}>{"Jacob Roush"}</h1>
-      <h2>
-        {
-          "is a fullstack software engineer who is slinging Javascript in the land of corn."
-        }
-      </h2>
+      <h1 style={{fontSize: '2em'}}>{"Jacob Roush"}</h1>
         <div className={styles.dot}></div>
       <AboutFlex />
     </>
