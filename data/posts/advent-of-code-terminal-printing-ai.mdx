@@ -1,15 +1,18 @@
 ---
-title: Advent of Code 2024 & Using terminal for visualization.
+title: Advent of Code 2024 & Using terminal for visualization with ASCII escape characters.
 date: '2024-12-11'
 keywords: 'adventofcode, terminal, visualization, rust, 2024'
 
 ---
 
-I didn't think people would be interested in doing leetcode style problems for fun however 200k people have proven that wrong.
+![](https://roush-image.s3.us-east-1.amazonaws.com/Screenshot+2024-12-12+at+10.07.07%E2%80%AFPM.png)
+
+
+I didn't think people would be interested in doing Leetcode-esque problems for fun however 200k people have proven that wrong.
 
 ---
 
-For myself I have been using Advent of Code as a way to learn rust. 🦀 Through these problems I've had some fun making some rudimetry visualizations in the terminal.
+For myself I have been using Advent of Code as a way to learn rust. 🦀 Through these problems, I've had some fun making rudimentary visualizations in the terminal to help learn the code I write (or rather AI generates for me).
 
 # The Problem
 
@@ -17,8 +20,137 @@ The well-explained problem can be found [here](https://adventofcode.com/2024/day
 
 # The Code
 
+```rust
+fn solve_part1(input: &str) -> i32 {
+
+    let multidimensional_array: Vec<Vec<char>> = input
+        .lines()
+        .map(|line| line.chars().collect())
+        .collect();
+
+    let terms = ["XMAS"];
+    let search_len = terms[0].len();
+
+    let directions = [
+        ( 1,  0),  // Right
+        ( 0,  1),  // Down
+        ( 1,  1),  // Diagonal down-right
+        ( 1, -1),  // Diagonal down-left
+        (-1,  0),  // Left (backwards)
+        ( 0, -1),  // Up (backwards)
+        (-1, -1),  // Diagonal up-left (backwards)
+        (-1,  1),  // Diagonal up-right (backwards)
+    ];
+    
+    let mut christmas_count = 0;
+    
+    for i in 0..rows {
+        for j in 0..cols {
+            for &term in &terms {
+                if multidimensional_array[i][j] == term.chars().next().unwrap() {
+                    'search: for (di, dj) in directions.iter() {
+                        let mut found = String::new();
+                        for k in 0..search_len {
+                            let ni = i as isize + di * k as isize;
+                            let nj = j as isize + dj * k as isize;
+                            if ni < 0 || ni >= rows as isize || nj < 0 || nj >= cols as isize {
+                                continue 'search;
+                            }
+                            
+                            found.push(multidimensional_array[ni as usize][nj as usize]);
+                        }
+                        if found == term {
+                            println!("Found '{}' at: ({}, {}), direction: ({}, {}){}", term, i, j, di, dj, "\x1b[K");
+
+                            christmas_count += 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    christmas_count
+}
+
+```
+
+Pretty cool right. Well chatGPT wrote a lot of it. All I wrote was the unit test and prompt.
+
+```rust
+#[cfg(test)]
+mod tests {
+use super::*;
+
+    #[test]
+    fn test_part1_example() {
+        let input = include_str!("../../input/day04-test.txt");
+        assert_eq!(solve_part1(input), 18);
+    }
+}
+```
+
 
 
 # Visualizing the Results
+
+![Advent of Code](https://roush-image.s3.us-east-1.amazonaws.com/advent-of-code-v2.gif)
+
+So great the code works I have a Star for Advent of Code on to the next problem. That didn't sit right; I wanted to understand how this works. 
+
+My two requirements for visualizing this cross-word search code was fun colors and maintaining clean terminal history.
+
+## ASCII Escapes
+```shell
+
+const FORMAT_TEXT_RED: &str = "\x1b[31m";
+const FORMAT_TEXT_GREEN: &str = "\x1b[38;5;22m";
+const FORMAT_TEXT_GOLD: &str = "\x1b[38;5;214m";
+const FORMAT_TEXT_YELLOW: &str = "\x1b[38;5;227m";
+const RESET_TEXT_FORMAT: &str = "\x1b[0m";
+const CLEAR_SC_BUFFER: &str = "\x1b[3J";
+```
+
+All the magic to have fun terminal visualization.
+
+Here is a simplified example with node:
+
+![](https://roush-image.s3.us-east-1.amazonaws.com/ascii-colors.gif)
+
+```shell
+const RESET_TEXT_FORMAT = "\u001B[0m";
+const CLEAR_SC_BUFFER = "\u001B[3J";
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const text = "Testing ASCII in 255 colors!";
+
+const colors = ["\u001B[31m", "\u001B[38;5;22m", "\u001B[38;5;214m", "\u001B[38;5;227m"];
+
+(async () => {
+    for (const color of colors) {
+        console.log(color + text + RESET_TEXT_FORMAT);
+        await sleep(759);
+        console.log(CLEAR_SC_BUFFER);
+    }
+})();
+```
+
+The above was all I needed to have a cool terminal display for my Advent of Code project.
+
+A quick cheat sheet for the ASCII escape sequences:
+
+`\x1b[38;5;{COLOR_HERE}m` - THisis used to set the foreground color in the terminal with 255 colors to choose from.
+
+ `\x1b[0m` - This resets the text formatting back to default.
+
+`\x1b[3J` - This clears the scrollback buffer in the terminal.
+
+# It's not much but it's honest work
+
+ASCII terminal escapes are nothing fancy but great to use if looking for simple and colorful ways to enhance terminal output.
+
+See my full day 4 solution [here](https://github.com/jjroush/advent-of-code-2024/blob/main/src/days/day04.rs)
 
 ---
