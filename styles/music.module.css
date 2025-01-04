@@ -1,117 +1,118 @@
 .PlaylistContainer {
-    width: 100%;
+	width: 100%;
 }
 
 @media only screen and (min-width: 500px) {
-    .PlaylistContainer {
-        flex-direction: column;
-        width: 100%;
-    }
+	.PlaylistContainer {
+		flex-direction: column;
+		width: 100%;
+	}
 }
 
 .FlexContainer {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 @media only screen and (max-width: 899px) {
-    .FlexContainer {
-        flex-direction: column;
-    }
+	.FlexContainer {
+		flex-direction: column;
+	}
 }
 
 .RecommendFlexContainer {
-    padding-top: 21px;
-    display: flex;
-    max-width: 100%;
+	padding-top: 21px;
+	display: flex;
+	max-width: 100%;
 }
 
 @media only screen and (max-width: 899px) {
-    .RecommendFlexContainer {
-        flex-direction: column;
-    }
+	.RecommendFlexContainer {
+		flex-direction: column;
+	}
 }
 
 @media only screen and (min-width: 899px) {
-    .RecommendSongInfo {
-        padding-left: 21px;
-        padding-right: 21px;
-    }
+	.RecommendSongInfo {
+		padding-left: 21px;
+		padding-right: 21px;
+	}
 }
 
 .FlexItem {
-    flex: 1 1 0px;
+	flex: 1 1 0px;
 }
 
 .Grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: right;
-    grid-gap: 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: right;
+	grid-gap: 40px;
 }
 
 .StyledButton {
-    background-color: #fffdd0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    height: 2.5rem;
-    color: #377e56;
-    border: 3px solid #377e56;
-    font-weight: 600;
-    font-size: 13px;
-    transition-duration: 0.4s;
+	background-color: #fffdd0;
+	font-family:
+		-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	height: 2.5rem;
+	color: #377e56;
+	border: 3px solid #377e56;
+	font-weight: 600;
+	font-size: 13px;
+	transition-duration: 0.4s;
 }
 
 .StyledButton:hover {
-    background-color: #377e56;
-    color: white;
-    transition-duration: 0.4s;
+	background-color: #377e56;
+	color: white;
+	transition-duration: 0.4s;
 }
 
 .StyledButton:active {
-    background-color: #2a5e41;
+	background-color: #2a5e41;
 }
 
 .PlaylistH2 {
-    margin-top: 6px;
-    margin-bottom: 8px;
+	margin-top: 6px;
+	margin-bottom: 8px;
 }
 
 .ArtistH2 {
-    margin-top: 6px;
-    margin-bottom: 50px;
-    display: inline-block;
+	margin-top: 6px;
+	margin-bottom: 50px;
+	display: inline-block;
 }
 
 .PlaylistDesc {
-    margin-top: 0px;
-    margin-bottom: 50px;
+	margin-top: 0px;
+	margin-bottom: 50px;
 }
 
 .RecommendDesc {
-    margin-top: 0px;
-    margin-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 10px;
 }
 
 .Input {
-    border-radius: 4px;
-    border-style: solid;
-    border-color: hsl(0, 0%, 80%);
-    min-height: 30px;
-    border-width: 1px;
-    display: block;
+	border-radius: 4px;
+	border-style: solid;
+	border-color: hsl(0, 0%, 80%);
+	min-height: 30px;
+	border-width: 1px;
+	display: block;
 }
 
 .Input:focus {
-    outline: none;
-    box-shadow: 0 0 0 1px #2684ff;
-    border-color: #2684ff;
+	outline: none;
+	box-shadow: 0 0 0 1px #2684ff;
+	border-color: #2684ff;
 }
 
 .NoteInput {
-    width: 300px;
+	width: 300px;
 }
 
 .AddNote {
-    display: block;
-    margin-bottom: 10px;
+	display: block;
+	margin-bottom: 10px;
 }

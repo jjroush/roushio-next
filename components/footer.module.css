@@ -1,52 +1,52 @@
 .FooterWrapper {
-    min-height: 145px;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 30px;
+	min-height: 145px;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 30px;
 }
 
 @media (max-width: 460px) {
-    .FooterWrapper {
-        flex-direction: column;
-        justify-content: center;
-    }
+	.FooterWrapper {
+		flex-direction: column;
+		justify-content: center;
+	}
 }
 
 .FooterItems {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-bottom: 30px;
-    padding-left: 0px;
-    list-style: none;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	margin-bottom: 0;
+	margin-left: 0;
+	padding-bottom: 30px;
+	padding-left: 0px;
+	list-style: none;
+	justify-content: center;
 }
 
 .FooterItems li {
-    margin-left: 12px;
-    margin-right: 12px;
+	margin-left: 12px;
+	margin-right: 12px;
 }
 
 .FooterItems li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 25px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 25px;
 }
 
 .FooterItems li a:hover {
-    color: #ddd;
+	color: #ddd;
 }
 
 .EmailContainer {
-    font-style: normal;
-    font-size: 20px;
-    margin-top: 15px;
-    margin-bottom: 50px;
+	font-style: normal;
+	font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: 50px;
 }
 
 @media (max-width: 460px) {
-    .EmailContainer {
-        text-align: center;
-    }
+	.EmailContainer {
+		text-align: center;
+	}
 }

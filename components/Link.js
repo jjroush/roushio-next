@@ -1,11 +1,7 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 function ActiveLink({ children, href }) {
-  return (
-    <Link href={href}>
-      {children}
-    </Link>
-  );
+	return <Link href={href}>{children}</Link>;
 }
 
 export default ActiveLink;

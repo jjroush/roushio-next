@@ -1,39 +1,40 @@
 .HeaderContainer {
-    margin: 0 auto;
-    max-width: 1000px;
-    width: max-content;
-    padding: 2.45rem 1.0875rem;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: red;
+	margin: 0 auto;
+	max-width: 1000px;
+	width: max-content;
+	padding: 2.45rem 1.0875rem;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: red;
 }
 
 .Nav ul {
-    margin: 0px;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+	margin: 0px;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .Nav ul li {
-    margin-left: 30px;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    letter-spacing: 2px;
-    font-size: 1.4rem;
-    text-align: center;
-    list-style-position: inside;
+	margin-left: 30px;
+	font-family:
+		-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	letter-spacing: 2px;
+	font-size: 1.4rem;
+	text-align: center;
+	list-style-position: inside;
 }
 
 .Nav ul li * {
-    text-decoration: none;
-    letter-spacing: 2px;
-    color: #FC421F;
+	text-decoration: none;
+	letter-spacing: 2px;
+	color: #fc421f;
 }
 
 .Nav ul li *:hover {
-    color: #ddd;
-    cursor: pointer;
+	color: #ddd;
+	cursor: pointer;
 }
