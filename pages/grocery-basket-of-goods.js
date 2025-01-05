@@ -7,7 +7,10 @@ export default function Home({ datas }) {
 	console.log("datas", datas);
 
 	const localPrice = datas[0].data[datas[0].data.length - 1].y;
+	const localPriceChange = datas[0].changes;
+
 	const nationalPrice = datas[1].data[datas[1].data.length - 1].y;
+	const nationalPriceChange = datas[1].changes;
 
 	return (
 		<div>
@@ -21,19 +24,19 @@ export default function Home({ datas }) {
 				<div className={styles.card}>
 					<h2 style={{ display: "inline-block" }}>{"Local Grocery Store"}</h2>
 					<div>{`$${Number(localPrice).toFixed(2)}`}</div>
-					{/*<div>{"+3.02 (5.02%)"}</div>*/}
+					<div>{localPriceChange}</div>
 				</div>
 				<div className={styles.card}>
-					<h2 style={{ display: "inline-block" }}>
+					<h2 style={{display: "inline-block"}}>
 						{"National Grocery Store"}
 					</h2>
 					<div>{`$${Number(nationalPrice).toFixed(2)}`}</div>
-					{/*<div>{"+32.00 (5.00%)"}</div>*/}
-					<div />
+					<div>{nationalPriceChange}</div>
+					<div/>
 				</div>
 			</div>
 
-			<div style={{ height: "600px" }}>
+			<div style={{height: "600px"}}>
 				<MyResponsiveLine datas={datas} />
 			</div>
 			<div>
