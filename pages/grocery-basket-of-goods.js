@@ -27,16 +27,16 @@ export default function Home({ datas }) {
 					<div>{localPriceChange}</div>
 				</div>
 				<div className={styles.card}>
-					<h2 style={{display: "inline-block"}}>
+					<h2 style={{ display: "inline-block" }}>
 						{"National Grocery Store"}
 					</h2>
 					<div>{`$${Number(nationalPrice).toFixed(2)}`}</div>
 					<div>{nationalPriceChange}</div>
-					<div/>
+					<div />
 				</div>
 			</div>
 
-			<div style={{height: "600px"}}>
+			<div style={{ height: "600px" }}>
 				<MyResponsiveLine datas={datas} />
 			</div>
 			<div>
