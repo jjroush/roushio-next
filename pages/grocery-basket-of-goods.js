@@ -6,10 +6,10 @@ import styles from "../styles/grocery-cron.module.css";
 export default function Home({ datas }) {
 	console.log("datas", datas);
 
-	const localPrice = datas[0].data[datas[0].data.length - 1].y;
+	const localPrice = datas[0].data[datas[0].data.length - 1]?.y;
 	const localPriceChange = datas[0].changes;
 
-	const nationalPrice = datas[1].data[datas[1].data.length - 1].y;
+	const nationalPrice = datas[1].data[datas[1].data.length - 1]?.y;
 	const nationalPriceChange = datas[1].changes;
 
 	return (
