@@ -69,6 +69,7 @@ export default async function handler(req, res) {
         `,
         headers: {
           'List-Unsubscribe': unsubscribeUrl,
+          'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
         },
       });
 
