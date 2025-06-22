@@ -1,7 +1,17 @@
 import { Resend } from 'resend';
 import pool from '../../lib/db';
+import crypto from 'crypto';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Generate a secure token for unsubscribe links
+function generateUnsubscribeToken(email) {
+  const secret = process.env.UNSUBSCRIBE_SECRET || 'your-secret-key';
+  return crypto
+    .createHmac('sha256', secret)
+    .update(email)
+    .digest('hex');
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -38,31 +48,39 @@ export default async function handler(req, res) {
       await client.query(insertQuery, [email, interests]);
       await client.query('COMMIT');
 
-    await resend.contacts.create({
-      email: email,
+      await resend.contacts.create({
+        email: email,
         audienceId: process.env.RESEND_AUDIENCE_ID,
-    });
+      });
 
-    await resend.emails.send({
-      from: 'onboarding@learning.roush.io',
-      to: email,
-      subject: 'Welcome to Jacob Roush\'s Blog',
-      html: `
-        <h1>Thanks for subscribing!</h1>
-        <p>You'll now receive updates when new posts are published.</p>
+      // Generate unsubscribe token
+      const unsubscribeToken = generateUnsubscribeToken(email);
+      const unsubscribeUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/unsubscribe?email=${encodeURIComponent(email)}&token=${unsubscribeToken}`;
+
+      await resend.emails.send({
+        from: 'onboarding@learning.roush.io',
+        to: email,
+        subject: 'Welcome to Jacob Roush\'s Blog',
+        html: `
+          <h1>Thanks for subscribing!</h1>
+          <p>You'll now receive updates when new posts are published.</p>
           <p>You've subscribed to the following topics: ${interests.join(', ')}</p>
-      `,
-    });
+          <p>If you wish to unsubscribe, you can <a href="${unsubscribeUrl}">click here</a>.</p>
+        `,
+        headers: {
+          'List-Unsubscribe': unsubscribeUrl,
+        },
+      });
 
-    res.status(200).json({ success: true });
-  } catch (error) {
+      res.status(200).json({ success: true });
+    } catch (error) {
       await client.query('ROLLBACK');
       throw error;
     } finally {
       client.release();
-  }
+    }
   } catch (error) {
     console.error('Subscribe error:', error);
     res.status(500).json({ error: 'Error subscribing' });
-}
+  }
 }
