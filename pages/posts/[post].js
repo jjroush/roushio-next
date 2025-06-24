@@ -4,7 +4,7 @@ import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import matter from "gray-matter";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { NextSeo } from "next-seo";
 import EmailSubscribe from "../../components/EmailSubscribe";
 import styles from "../../styles/Home.module.css";
@@ -20,13 +20,16 @@ function Post({ frontMatter, mdxContent }) {
 				<h1>{frontMatter.title}</h1>
 				<p>{frontMatter.date}</p>
 				{frontMatter.image && (
-					<Image
-						height={616}
-						priority
-						quality={60}
-						src={frontMatter.image}
-						width={1200}
-					/>
+					<div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '2rem' }}>
+						<Image
+							src={frontMatter.image}
+							alt={frontMatter.title}
+							fill
+							priority
+							quality={60}
+							style={{ objectFit: 'contain' }}
+						/>
+					</div>
 				)}
 				<div className="post-content">
 					<MDXRemote {...mdxContent} />

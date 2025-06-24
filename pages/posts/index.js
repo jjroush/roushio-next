@@ -15,6 +15,23 @@ const StyledExcerpt = {
 	color: "#282828",
 };
 
+const StyledExcerptLink = {
+	color: "#0066cc",
+	textDecoration: "underline",
+};
+
+// Utility function to convert markdown links to just the link text
+function parseMarkdownLinks(text) {
+	if (!text) return "";
+	
+	// Convert markdown links [text](url) to just the text part
+	// This regex handles:
+	// - [text](url)
+	// - [text](url "title") - ignores title
+	// - Escaped brackets and parentheses
+	return text.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, '$1');
+}
+
 function PostPage({ posts }) {
 	return (
 		<>
@@ -27,7 +44,10 @@ function PostPage({ posts }) {
 					<div style={StyledA}>
 						<h2>{post.title}</h2>
 						<p>{post.date}</p>
-						<div style={StyledExcerpt}>{post.excerpt}</div>
+						<div 
+							style={StyledExcerpt}
+							dangerouslySetInnerHTML={{ __html: parseMarkdownLinks(post.excerpt) }}
+						/>
 					</div>
 				</Link>
 			))}
