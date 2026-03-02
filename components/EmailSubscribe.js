@@ -1,10 +1,4 @@
-import path from "path";
 import { useState } from 'react';
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import matter from "gray-matter";
-import Image from "next/legacy/image";
-import { NextSeo } from "next-seo";
 
 export default function EmailSubscribe({ frontMatter, mdxContent }) {
   const [email, setEmail] = useState('');

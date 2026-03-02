@@ -5,9 +5,10 @@ const withMDX = require("@next/mdx")({
 module.exports = withMDX({
 	pageExtensions: ["js", "jsx", "mdx"],
 	images: {
-		domains: ["roush-image.s3.amazonaws.com", "mosaic.scdn.co", "i.scdn.co"],
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
+		remotePatterns: [
+			{ protocol: "https", hostname: "roush-image.s3.amazonaws.com" },
+			{ protocol: "https", hostname: "mosaic.scdn.co" },
+			{ protocol: "https", hostname: "i.scdn.co" },
+		],
 	},
 });
