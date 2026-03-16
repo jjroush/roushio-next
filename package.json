@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"engines": {
-		"node": "22"
+		"node": "24"
 	},
 	"scripts": {
 		"dev": "next dev",
@@ -19,8 +19,8 @@
 		"@mdx-js/loader": "^3.1.1",
 		"@mdx-js/react": "^3.1.1",
 		"@next/mdx": "^16.1.6",
-		"@nivo/core": "^0.94.0",
-		"@nivo/line": "^0.94.0",
+		"@nivo/core": "^0.98.0",
+		"@nivo/line": "^0.98.0",
 		"@uidotdev/usehooks": "^2.4.1",
 		"@vercel/speed-insights": "^1.2.0",
 		"dotenv": "^16.5.0",
@@ -33,7 +33,7 @@
 		"react": "^19.2.4",
 		"react-confetti": "6.2.2",
 		"react-dom": "^19.2.4",
-		"react-select": "5.4.0",
+		"react-select": "^5.10.2",
 		"react-use": "17.5.0",
 		"resend": "^4.5.1",
 		"stylis": "^4.3.1",
