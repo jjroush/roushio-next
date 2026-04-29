@@ -1,54 +1,9 @@
 .page {
-	--pn-bg: #fef9d7;
-	--pn-text: #231e05;
-	--pn-accent: #504718;
-	--pn-card: #fffcee;
-	--pn-banner: #eb4503;
-	--pn-border: rgba(80, 71, 24, 0.3);
-	--pn-secondary: rgba(35, 30, 5, 0.65);
-
-	background-color: var(--pn-bg);
 	color: var(--pn-text);
-	border-radius: 16px;
-	padding: 32px;
-	margin: 16px 0 48px;
-	border: 1px solid var(--pn-border);
+	padding: 8px 0 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-	.page {
-		--pn-bg: #231e05;
-		--pn-text: #fef9d7;
-		--pn-accent: #a89648;
-		--pn-card: #332b10;
-		--pn-border: rgba(168, 150, 72, 0.3);
-		--pn-secondary: rgba(254, 249, 215, 0.65);
-	}
-}
-
-.hero {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	margin-bottom: 24px;
-}
-
-.iconBadge {
-	width: 84px;
-	height: 84px;
-	border-radius: 20px;
-	background: var(--pn-accent);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--pn-bg);
-	font-size: 44px;
-	font-weight: 700;
-	flex-shrink: 0;
-	box-shadow: 0 4px 12px var(--pn-border);
-}
-
-.heroText h1 {
+.pageTitle {
 	margin: 0 0 4px;
 	color: var(--pn-text);
 	font-size: 2.4rem;
@@ -57,7 +12,7 @@
 
 .subtitle {
 	color: var(--pn-secondary);
-	margin: 0;
+	margin: 0 0 28px;
 	font-size: 1.1rem;
 }
 

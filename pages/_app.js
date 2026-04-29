@@ -27,16 +27,22 @@ function MyApp({ Component, pageProps }) {
 		};
 	}, []);
 
+	const getLayout =
+		Component.getLayout ||
+		((page) => (
+			<>
+				<Header />
+				<div className={styles.gutter}>
+					<div className={styles.container}>{page}</div>
+					<Footer />
+				</div>
+			</>
+		));
+
 	return (
 		<>
-			<Header />
-			<div className={styles.gutter}>
-				<div className={styles.container}>
-					<Component {...pageProps} />
-					<SpeedInsights />
-				</div>
-				<Footer />
-			</div>
+			{getLayout(<Component {...pageProps} />)}
+			<SpeedInsights />
 		</>
 	);
 }

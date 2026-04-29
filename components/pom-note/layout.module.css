@@ -1,0 +1,142 @@
+.shell {
+	--pn-bg: #fef9d7;
+	--pn-text: #231e05;
+	--pn-accent: #504718;
+	--pn-card: #fffcee;
+	--pn-banner: #eb4503;
+	--pn-border: rgba(80, 71, 24, 0.3);
+	--pn-secondary: rgba(35, 30, 5, 0.65);
+
+	background-color: var(--pn-bg);
+	color: var(--pn-text);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+	.shell {
+		--pn-bg: #231e05;
+		--pn-text: #fef9d7;
+		--pn-accent: #a89648;
+		--pn-card: #332b10;
+		--pn-border: rgba(168, 150, 72, 0.3);
+		--pn-secondary: rgba(254, 249, 215, 0.65);
+	}
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 18px 24px;
+	border-bottom: 1px solid var(--pn-border);
+	max-width: 960px;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	text-decoration: none;
+	color: var(--pn-text);
+}
+
+.brandIcon {
+	width: 36px;
+	height: 36px;
+	border-radius: 9px;
+	background: var(--pn-accent);
+	color: var(--pn-bg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 1.1rem;
+	letter-spacing: -0.02em;
+}
+
+.brandName {
+	font-weight: 700;
+	font-size: 1.15rem;
+	letter-spacing: -0.01em;
+	color: var(--pn-text);
+}
+
+.nav {
+	display: flex;
+	gap: 22px;
+}
+
+.nav a {
+	color: var(--pn-accent);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.nav a:hover {
+	text-decoration: underline;
+}
+
+.main {
+	flex: 1;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+.footer {
+	border-top: 1px solid var(--pn-border);
+	padding: 24px;
+	max-width: 960px;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--pn-secondary);
+	font-size: 0.95rem;
+}
+
+.footer a {
+	color: var(--pn-accent);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
+
+.footerLinks {
+	display: flex;
+	gap: 18px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+	.header {
+		padding: 14px 18px;
+	}
+
+	.nav {
+		gap: 16px;
+	}
+
+	.footer {
+		justify-content: center;
+		text-align: center;
+	}
+}

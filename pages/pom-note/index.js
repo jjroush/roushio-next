@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 
+import { getPomNoteLayout } from "../../components/pom-note/layout";
 import styles from "../../styles/pom-note.module.css";
 
 export default function PomNote() {
@@ -11,15 +12,10 @@ export default function PomNote() {
 				title="Pom Note — Focus Timer + Voice Notes"
 			/>
 			<div className={styles.page}>
-				<div className={styles.hero}>
-					<div className={styles.iconBadge}>{"P"}</div>
-					<div className={styles.heroText}>
-						<h1>{"Pom Note"}</h1>
-						<p className={styles.subtitle}>
-							{"Focus Timer + Voice Notes for iPhone"}
-						</p>
-					</div>
-				</div>
+				<h1 className={styles.pageTitle}>{"Support"}</h1>
+				<p className={styles.subtitle}>
+					{"Focus Timer + Voice Notes for iPhone"}
+				</p>
 
 				<p className={styles.lede}>
 					{
@@ -146,7 +142,7 @@ export default function PomNote() {
 				</div>
 
 				<div className={styles.section}>
-					<h2>{"Support"}</h2>
+					<h2>{"Contact"}</h2>
 					<div className={styles.contactCard}>
 						<p>
 							{"Bug reports, feature requests, or feedback — email "}
@@ -166,3 +162,5 @@ export default function PomNote() {
 		</>
 	);
 }
+
+PomNote.getLayout = getPomNoteLayout;

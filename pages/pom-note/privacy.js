@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 
+import { getPomNoteLayout } from "../../components/pom-note/layout";
 import styles from "../../styles/pom-note.module.css";
 
 export default function PomNotePrivacy() {
@@ -11,14 +12,7 @@ export default function PomNotePrivacy() {
 				title="Pom Note — Privacy Policy"
 			/>
 			<div className={styles.page}>
-				<div className={styles.hero}>
-					<div className={styles.iconBadge}>{"P"}</div>
-					<div className={styles.heroText}>
-						<h1>{"Privacy Policy"}</h1>
-						<p className={styles.subtitle}>{"Pom Note for iPhone"}</p>
-					</div>
-				</div>
-
+				<h1 className={styles.pageTitle}>{"Privacy Policy"}</h1>
 				<p className={styles.updated}>{"Last updated: April 28, 2026"}</p>
 
 				<p className={styles.lede}>
@@ -127,3 +121,5 @@ export default function PomNotePrivacy() {
 		</>
 	);
 }
+
+PomNotePrivacy.getLayout = getPomNoteLayout;
