@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 
-import { getPomNoteLayout } from "../../components/pom-note/layout";
-import styles from "../../styles/pom-note.module.css";
+import { getPomoNoteLayout } from "../../components/pomo-note/layout";
+import styles from "../../styles/pomo-note.module.css";
 
-export default function PomNote() {
+export default function PomoNote() {
 	return (
 		<>
 			<NextSeo
-				description="Pom Note — a pomodoro voice transcription app for hyper-focused notetaking. Set a timer, speak your thoughts, and let Pom Note transcribe them into organized notes."
-				title="Pom Note — Focus Timer + Voice Notes"
+				description="Pomo Note — a pomodoro voice transcription app for hyper-focused notetaking. Set a timer, speak your thoughts, and let Pomo Note transcribe them into organized notes."
+				title="Pomo Note — Focus Timer + Voice Notes"
 			/>
 			<div className={styles.page}>
 				<h1 className={styles.pageTitle}>{"Support"}</h1>
@@ -19,7 +19,7 @@ export default function PomNote() {
 
 				<p className={styles.lede}>
 					{
-						"Stay in flow. Set a pomodoro timer, speak your thoughts, and let Pom Note transcribe them into organized notes — all on-device, all private."
+						"Stay in flow. Set a pomodoro timer, speak your thoughts, and let Pomo Note transcribe them into organized notes — all on-device, all private."
 					}
 				</p>
 
@@ -63,7 +63,7 @@ export default function PomNote() {
 					<ol>
 						<li>
 							{
-								"Open Pom Note and pick a category, or create one for the topic you're focusing on."
+								"Open Pomo Note and pick a category, or create one for the topic you're focusing on."
 							}
 						</li>
 						<li>
@@ -78,7 +78,7 @@ export default function PomNote() {
 						</li>
 						<li>
 							{
-								"Pause briefly between thoughts and Pom Note will save each as its own timestamped note."
+								"Pause briefly between thoughts and Pomo Note will save each as its own timestamped note."
 							}
 						</li>
 					</ol>
@@ -94,9 +94,9 @@ export default function PomNote() {
 					<h2>{"Permissions"}</h2>
 					<p>
 						{
-							"Pom Note asks for two permissions on first launch: microphone access (to capture audio) and speech recognition (to convert audio to text). Both are required for the app's core feature. You can review or change these at any time in "
+							"Pomo Note asks for two permissions on first launch: microphone access (to capture audio) and speech recognition (to convert audio to text). Both are required for the app's core feature. You can review or change these at any time in "
 						}
-						<strong>{"Settings → Pom Note"}</strong>
+						<strong>{"Settings → Pomo Note"}</strong>
 						{"."}
 					</p>
 				</div>
@@ -108,7 +108,7 @@ export default function PomNote() {
 						<h3>{"Where are my notes stored?"}</h3>
 						<p>
 							{
-								"On your iPhone, locally. Pom Note has no backend, no account system, and no analytics. Your notes never leave your device."
+								"On your iPhone, locally. Pomo Note has no backend, no account system, and no analytics. Your notes never leave your device."
 							}
 						</p>
 					</div>
@@ -126,7 +126,7 @@ export default function PomNote() {
 						<h3>{"What happens if I deny microphone access?"}</h3>
 						<p>
 							{
-								"The timer still works, but voice transcription requires microphone and speech recognition permissions. To re-enable, go to Settings → Pom Note and toggle them back on."
+								"The timer still works, but voice transcription requires microphone and speech recognition permissions. To re-enable, go to Settings → Pomo Note and toggle them back on."
 							}
 						</p>
 					</div>
@@ -146,14 +146,14 @@ export default function PomNote() {
 					<div className={styles.contactCard}>
 						<p>
 							{"Bug reports, feature requests, or feedback — email "}
-							<a href="mailto:hello@roush.io?subject=Pom%20Note">
+							<a href="mailto:hello@roush.io?subject=Pomo%20Note">
 								{"hello@roush.io"}
 							</a>
 							{"."}
 						</p>
 						<p>
 							{"See the "}
-							<Link href="/pom-note/privacy">{"Privacy Policy"}</Link>
+							<Link href="/pomo-note/privacy">{"Privacy Policy"}</Link>
 							{" for details on data handling."}
 						</p>
 					</div>
@@ -163,4 +163,4 @@ export default function PomNote() {
 	);
 }
 
-PomNote.getLayout = getPomNoteLayout;
+PomoNote.getLayout = getPomoNoteLayout;

@@ -1,23 +1,23 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 
-import { getPomNoteLayout } from "../../components/pom-note/layout";
-import styles from "../../styles/pom-note.module.css";
+import { getPomoNoteLayout } from "../../components/pomo-note/layout";
+import styles from "../../styles/pomo-note.module.css";
 
-export default function PomNotePrivacy() {
+export default function PomoNotePrivacy() {
 	return (
 		<>
 			<NextSeo
-				description="Privacy Policy for Pom Note — a pomodoro voice transcription app for iPhone."
-				title="Pom Note — Privacy Policy"
+				description="Privacy Policy for Pomo Note — a pomodoro voice transcription app for iPhone."
+				title="Pomo Note — Privacy Policy"
 			/>
 			<div className={styles.page}>
 				<h1 className={styles.pageTitle}>{"Privacy Policy"}</h1>
-				<p className={styles.updated}>{"Last updated: April 28, 2026"}</p>
+				<p className={styles.updated}>{"Last updated: April 30, 2026"}</p>
 
 				<p className={styles.lede}>
 					{
-						"Pom Note is built around a simple privacy promise: your notes belong to you, and they never leave your device. This page explains exactly what that means."
+						"Pomo Note is built around a simple privacy promise: your notes belong to you, and they never leave your device. This page explains exactly what that means."
 					}
 				</p>
 
@@ -26,7 +26,7 @@ export default function PomNotePrivacy() {
 					<p>
 						<strong>{"Nothing. "}</strong>
 						{
-							"Pom Note has no backend, no account system, no analytics, no tracking, no advertising SDKs, and no third-party services. We do not collect, transmit, or store any personal information."
+							"Pomo Note has no backend, no account system, no analytics, no tracking, no advertising SDKs, and no third-party services. We do not collect, transmit, or store any personal information."
 						}
 					</p>
 				</div>
@@ -35,7 +35,7 @@ export default function PomNotePrivacy() {
 					<h2>{"Microphone & speech recognition"}</h2>
 					<p>
 						{
-							"To transcribe your voice into notes, Pom Note requires two permissions:"
+							"To transcribe your voice into notes, Pomo Note requires two permissions:"
 						}
 					</p>
 					<ul>
@@ -54,7 +54,7 @@ export default function PomNotePrivacy() {
 					</ul>
 					<p>
 						{
-							"You can revoke either permission at any time in Settings → Pom Note. The timer will continue to work without them, but voice transcription will be disabled."
+							"You can revoke either permission at any time in Settings → Pomo Note. The timer will continue to work without them, but voice transcription will be disabled."
 						}
 					</p>
 				</div>
@@ -68,7 +68,7 @@ export default function PomNotePrivacy() {
 					</p>
 					<p>
 						{
-							"Pom Note does not back up your notes to iCloud, AirDrop them, or transmit them to any other device automatically. If you want a copy, you'll need to export it yourself."
+							"Pomo Note does not back up your notes to iCloud, AirDrop them, or transmit them to any other device automatically. If you want a copy, you'll need to export it yourself."
 						}
 					</p>
 				</div>
@@ -77,7 +77,7 @@ export default function PomNotePrivacy() {
 					<h2>{"Notifications & Live Activities"}</h2>
 					<p>
 						{
-							"Pom Note may show a Live Activity on the lock screen and Dynamic Island while a pomodoro is running, and may post a local notification when the timer ends. These run entirely on your device — Apple's notification system delivers them, and no third-party push service is involved."
+							"Pomo Note may show a Live Activity on the lock screen and Dynamic Island while a pomodoro is running, and may post a local notification when the timer ends. These run entirely on your device — Apple's notification system delivers them, and no third-party push service is involved."
 						}
 					</p>
 				</div>
@@ -86,7 +86,7 @@ export default function PomNotePrivacy() {
 					<h2>{"Children's privacy"}</h2>
 					<p>
 						{
-							"Pom Note does not knowingly collect any information from anyone, including children under 13. Because the app does not collect data at all, there is nothing to share or sell."
+							"Pomo Note does not knowingly collect any information from anyone, including children under 13. Because the app does not collect data at all, there is nothing to share or sell."
 						}
 					</p>
 				</div>
@@ -95,7 +95,7 @@ export default function PomNotePrivacy() {
 					<h2>{"Changes to this policy"}</h2>
 					<p>
 						{
-							'If the privacy policy changes — for example, if a future version of Pom Note adds an optional sync feature — the new policy will be posted here and the "Last updated" date above will be revised. Material changes will be communicated in the App Store "What\'s New" notes.'
+							'If the privacy policy changes — for example, if a future version of Pomo Note adds an optional sync feature — the new policy will be posted here and the "Last updated" date above will be revised. Material changes will be communicated in the App Store "What\'s New" notes.'
 						}
 					</p>
 				</div>
@@ -105,14 +105,14 @@ export default function PomNotePrivacy() {
 					<div className={styles.contactCard}>
 						<p>
 							{"Questions about privacy? Email "}
-							<a href="mailto:hello@roush.io?subject=Pom%20Note%20Privacy">
+							<a href="mailto:hello@roush.io?subject=Pomo%20Note%20Privacy">
 								{"hello@roush.io"}
 							</a>
 							{"."}
 						</p>
 						<p>
 							{"Back to the "}
-							<Link href="/pom-note">{"Pom Note support page"}</Link>
+							<Link href="/pomo-note">{"Pomo Note support page"}</Link>
 							{"."}
 						</p>
 					</div>
@@ -122,4 +122,4 @@ export default function PomNotePrivacy() {
 	);
 }
 
-PomNotePrivacy.getLayout = getPomNoteLayout;
+PomoNotePrivacy.getLayout = getPomoNoteLayout;

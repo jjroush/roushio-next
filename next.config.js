@@ -11,4 +11,18 @@ module.exports = withMDX({
 			{ protocol: "https", hostname: "i.scdn.co" },
 		],
 	},
+	async redirects() {
+		return [
+			{
+				source: "/pom-note",
+				destination: "/pomo-note",
+				permanent: true,
+			},
+			{
+				source: "/pom-note/:path*",
+				destination: "/pomo-note/:path*",
+				permanent: true,
+			},
+		];
+	},
 });
