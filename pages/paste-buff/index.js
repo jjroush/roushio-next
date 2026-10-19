@@ -303,12 +303,6 @@ export default function PasteBuff() {
 								" macOS asks for Accessibility access so paste-buff can press ⌘V for you."
 							}
 						</li>
-						<li>
-							<strong>{"Using Raycast?"}</strong>
-							{
-								" Turn off its Clipboard History hotkey. It also listens for ⌘⇧V."
-							}
-						</li>
 					</ul>
 					<div className={styles.ctas}>
 						<a className={styles.textLink} href={`${REPO_URL}/releases`}>
