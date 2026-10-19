@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import { useState } from "react";
 
 import {
 	getPasteBuffLayout,
@@ -8,8 +7,7 @@ import {
 import Panel from "../../components/paste-buff/panel";
 import styles from "../../styles/paste-buff.module.css";
 
-const INSTALL_CMD =
-	"curl -fsSL https://raw.githubusercontent.com/jjroush/paste-buff/main/scripts/install.sh | sh";
+const DMG_URL = `${REPO_URL}/releases/latest/download/paste-buff.dmg`;
 
 // Round two of the README benchmark (text-only seed). Footprint in MB.
 const MEMORY = [
@@ -87,29 +85,6 @@ function Keycaps({ keys }) {
 				</kbd>
 			))}
 		</span>
-	);
-}
-
-function CopyCommand() {
-	const [copied, setCopied] = useState(false);
-
-	const copy = async () => {
-		try {
-			await navigator.clipboard.writeText(INSTALL_CMD);
-			setCopied(true);
-			setTimeout(() => setCopied(false), 1600);
-		} catch {
-			setCopied(false);
-		}
-	};
-
-	return (
-		<div className={styles.command}>
-			<code>{INSTALL_CMD}</code>
-			<button className={styles.copyButton} onClick={copy} type="button">
-				{copied ? "Copied" : "Copy"}
-			</button>
-		</div>
 	);
 }
 
@@ -201,8 +176,8 @@ export default function PasteBuff() {
 					}
 				</p>
 				<div className={styles.ctas}>
-					<a className={styles.button} href="#install">
-						{"Install"}
+					<a className={styles.button} href={DMG_URL}>
+						{"Download for Mac"}
 					</a>
 					<a className={styles.textLink} href={REPO_URL}>
 						{"View on GitHub ›"}
@@ -285,24 +260,47 @@ export default function PasteBuff() {
 
 			<section className={styles.install} id="install">
 				<div className={styles.container}>
-					<h2 className={styles.sectionTitle}>{"Install in one line."}</h2>
-					<p className={styles.lede}>
+					<h2 className={styles.sectionTitle}>{"Get paste-buff."}</h2>
+					<div className={styles.download}>
+						<img
+							alt=""
+							className={styles.appIcon}
+							height={128}
+							src="/paste-buff/icon.png"
+							width={128}
+						/>
+						<div className={styles.downloadText}>
+							<h3>{"paste-buff"}</h3>
+							<p>{"Free · macOS 13 or later · Apple Silicon and Intel"}</p>
+						</div>
+						<a className={styles.button} href={DMG_URL}>
+							{"Download"}
+						</a>
+					</div>
+					<p className={styles.steps}>
 						{
-							"For Apple Silicon and Intel Macs. The script checks the download's SHA-256, puts paste-buff in ~/.local/bin and starts it at login."
+							"Open the DMG, drag paste-buff into Applications, open it once, then press "
 						}
+						<Keycaps keys={["⌘", "⇧", "V"]} />
+						{"."}
 					</p>
-					<CopyCommand />
 					<ul className={styles.notes}>
 						<li>
 							<strong>{"Signed and notarized."}</strong>
 							{
-								" Every release carries a Developer ID signature checked by Apple."
+								" The app and the DMG carry a Developer ID signature checked by Apple, so they open without warnings."
+							}
+						</li>
+						<li>
+							<strong>{"Starts at login."}</strong>
+							{
+								" paste-buff adds itself to Login Items on first launch. Switch it off in System Settings and it stays off."
 							}
 						</li>
 						<li>
 							<strong>{"One permission."}</strong>
 							{
-								" The first time you paste, macOS asks for Accessibility access so paste-buff can press ⌘V for you."
+								" macOS asks for Accessibility access so paste-buff can press ⌘V for you."
 							}
 						</li>
 						<li>
@@ -311,16 +309,10 @@ export default function PasteBuff() {
 								" Turn off its Clipboard History hotkey. It also listens for ⌘⇧V."
 							}
 						</li>
-						<li>
-							<strong>{"Changed your mind?"}</strong>
-							{" Run the script with "}
-							<code>{"--uninstall"}</code>
-							{" to remove the app and its login item."}
-						</li>
 					</ul>
 					<div className={styles.ctas}>
-						<a className={styles.button} href={`${REPO_URL}/releases/latest`}>
-							{"Latest release"}
+						<a className={styles.textLink} href={`${REPO_URL}/releases`}>
+							{"Release notes ›"}
 						</a>
 						<a className={styles.textLink} href={REPO_URL}>
 							{"Source on GitHub ›"}

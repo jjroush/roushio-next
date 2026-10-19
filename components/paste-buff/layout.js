@@ -26,7 +26,7 @@ const PasteBuffLayout = ({ children }) => (
 						<a href="#performance">{"Performance"}</a>
 						<a href={REPO_URL}>{"GitHub"}</a>
 						<a className={styles.navCta} href="#install">
-							{"Install"}
+							{"Download"}
 						</a>
 					</div>
 				</div>

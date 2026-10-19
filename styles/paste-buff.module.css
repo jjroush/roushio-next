@@ -363,39 +363,58 @@
 
 /* Install */
 
-.command {
+.download {
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	padding: 14px 14px 14px 22px;
-	border-radius: 18px;
+	gap: 28px;
+	padding: 28px 32px;
+	border-radius: 28px;
 	background: var(--pb-bg-alt);
-	border: 1px solid var(--pb-hairline);
 }
 
-.command code {
+.appIcon {
+	width: 96px;
+	height: 96px;
+	flex: none;
+}
+
+.downloadText {
 	flex: 1;
 	min-width: 0;
-	overflow-x: auto;
-	white-space: nowrap;
-	font-family: ui-monospace, "SF Mono", Menlo, monospace;
-	font-size: 15px;
 }
 
-.copyButton {
-	flex: none;
-	padding: 8px 16px;
-	border: 0;
+.downloadText h3 {
+	margin: 0 0 4px;
+	font-size: 28px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.downloadText p {
+	margin: 0;
+	font-size: 17px;
+	color: var(--pb-secondary);
+}
+
+.download .button {
+	display: inline-block;
+	padding: 12px 28px;
 	border-radius: 980px;
 	background: var(--pb-accent);
 	color: #ffffff;
-	font: inherit;
-	font-size: 14px;
-	cursor: pointer;
+	font-size: 17px;
+	line-height: 1.2;
 }
 
-.copyButton:hover {
+.download .button:hover {
 	background: var(--pb-accent-hover);
+	text-decoration: none;
+}
+
+.steps {
+	margin: 28px 0 0;
+	font-size: 19px;
+	line-height: 1.5;
 }
 
 .notes {
@@ -435,6 +454,12 @@
 
 	.tileWide {
 		grid-column: auto;
+	}
+
+	.download {
+		flex-direction: column;
+		text-align: center;
+		gap: 16px;
 	}
 
 	.barRow {
