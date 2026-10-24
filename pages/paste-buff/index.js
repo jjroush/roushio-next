@@ -1,3 +1,4 @@
+import * as Fathom from "fathom-client";
 import { NextSeo } from "next-seo";
 
 import {
@@ -8,6 +9,10 @@ import Panel from "../../components/paste-buff/panel";
 import styles from "../../styles/paste-buff.module.css";
 
 const DMG_URL = `${REPO_URL}/releases/latest/download/paste-buff.dmg`;
+
+// Fathom events, one per button, so the dashboard shows which one converts.
+const trackDownload = (where) => () =>
+	Fathom.trackEvent(`paste-buff download (${where})`);
 
 // README benchmark, text-only seed. paste-buff 0.4.0 and Maccy are round
 // three (2026-10-24); GPUI, Tauri and Raycast are rounds one and two.
@@ -185,7 +190,11 @@ export default function PasteBuff() {
 					}
 				</p>
 				<div className={styles.ctas}>
-					<a className={styles.button} href={DMG_URL}>
+					<a
+						className={styles.button}
+						href={DMG_URL}
+						onClick={trackDownload("hero")}
+					>
 						{"Download for Mac"}
 					</a>
 					<a className={styles.textLink} href={REPO_URL}>
@@ -282,7 +291,11 @@ export default function PasteBuff() {
 							<h3>{"paste-buff"}</h3>
 							<p>{"Free · macOS 13 or later · Apple Silicon and Intel"}</p>
 						</div>
-						<a className={styles.button} href={DMG_URL}>
+						<a
+							className={styles.button}
+							href={DMG_URL}
+							onClick={trackDownload("install")}
+						>
 							{"Download"}
 						</a>
 					</div>
