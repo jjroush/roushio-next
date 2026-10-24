@@ -6,29 +6,55 @@
 	margin: 0 auto;
 }
 
+/* Liquid Glass, as NSGlassEffectView draws it: a translucent tint over a
+   blurred, saturated backdrop, with a bright rim and a soft inner glow.
+   It follows the system appearance like the app does. */
 .panel {
 	--u: calc(100cqw / 760);
-	--panel-bg: #1c1c1e;
-	--panel-border: #313135;
-	--label: rgba(255, 255, 255, 0.85);
-	--secondary: rgba(255, 255, 255, 0.55);
-	--separator: rgba(255, 255, 255, 0.1);
-	--selection: #0a5fd8;
+	--glass-tint: rgba(255, 255, 255, 0.42);
+	--glass-rim: rgba(255, 255, 255, 0.75);
+	--glass-glow: rgba(255, 255, 255, 0.55);
+	--glass-edge: rgba(0, 0, 0, 0.12);
+	--label: rgba(0, 0, 0, 0.85);
+	--secondary: rgba(0, 0, 0, 0.5);
+	--separator: rgba(0, 0, 0, 0.1);
+	--selection: #0a7aff;
 
+	position: relative;
 	aspect-ratio: 760 / 460;
 	display: flex;
 	flex-direction: column;
-	background: var(--panel-bg);
-	border: max(1px, var(--u)) solid var(--panel-border);
-	border-radius: calc(var(--u) * 12);
+	background: linear-gradient(
+			160deg,
+			rgba(255, 255, 255, 0.28) 0%,
+			rgba(255, 255, 255, 0) 45%
+		), var(--glass-tint);
+	-webkit-backdrop-filter: blur(calc(var(--u) * 28)) saturate(180%);
+	backdrop-filter: blur(calc(var(--u) * 28)) saturate(180%);
+	border-radius: calc(var(--u) * 18);
 	overflow: hidden;
 	color: var(--label);
 	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 	font-size: calc(var(--u) * 13);
 	letter-spacing: 0;
 	text-align: left;
-	box-shadow: 0 calc(var(--u) * 22) calc(var(--u) * 70) rgba(0, 0, 0, 0.35), 0 0
-		0 calc(var(--u) * 0.5) rgba(0, 0, 0, 0.6);
+	box-shadow: inset 0 calc(var(--u) * 1) 0 var(--glass-rim), inset 0 0 0
+		calc(var(--u) * 1) var(--glass-edge), inset 0 0 calc(var(--u) * 24)
+		var(--glass-glow), 0 calc(var(--u) * 22) calc(var(--u) * 70)
+		rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+	.panel {
+		--glass-tint: rgba(28, 28, 32, 0.5);
+		--glass-rim: rgba(255, 255, 255, 0.35);
+		--glass-glow: rgba(255, 255, 255, 0.08);
+		--glass-edge: rgba(255, 255, 255, 0.14);
+		--label: rgba(255, 255, 255, 0.88);
+		--secondary: rgba(255, 255, 255, 0.55);
+		--separator: rgba(255, 255, 255, 0.12);
+		--selection: #0a6cff;
+	}
 }
 
 .header {
@@ -55,7 +81,7 @@
 	width: calc(var(--u) * 300);
 	flex: none;
 	margin: 0;
-	padding: calc(var(--u) * 4) calc(var(--u) * 6);
+	padding: calc(var(--u) * 6) calc(var(--u) * 10);
 	list-style: none;
 	border-right: 1px solid var(--separator);
 	overflow: hidden;
@@ -67,8 +93,8 @@
 	display: flex;
 	align-items: center;
 	gap: calc(var(--u) * 4);
-	padding: 0 calc(var(--u) * 6);
-	border-radius: calc(var(--u) * 6);
+	padding: 0 calc(var(--u) * 8);
+	border-radius: calc(var(--u) * 10);
 }
 
 .rowSelected {

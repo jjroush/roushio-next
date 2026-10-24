@@ -71,7 +71,7 @@ export default function Panel() {
 					</div>
 				</div>
 				<div className={styles.footer}>
-					<span className={styles.brand}>{"paste-buff · AppKit"}</span>
+					<span className={styles.brand}>{"paste-buff"}</span>
 					<span className={styles.actions}>
 						{"Paste to Notes  ⏎      Delete  ⌘⌫"}
 					</span>

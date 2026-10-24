@@ -120,6 +120,36 @@
 		radial-gradient(120% 100% at 50% 110%, #ff7a59 0%, transparent 60%), #3d3a8f;
 }
 
+/* Crisp shapes behind the panel give the glass something to refract. */
+.stage::before,
+.stage::after {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+}
+
+.stage::before {
+	width: 34%;
+	aspect-ratio: 1;
+	left: 8%;
+	top: 18%;
+	background: linear-gradient(135deg, #ffd25e, #ff7a59);
+}
+
+.stage::after {
+	width: 26%;
+	aspect-ratio: 1;
+	right: 10%;
+	bottom: 6%;
+	background: linear-gradient(135deg, #5ef0d0, #2b8cff);
+}
+
+.stage > * {
+	position: relative;
+	z-index: 1;
+}
+
 /* Keycaps */
 
 .keycaps {
