@@ -9,14 +9,16 @@ import styles from "../../styles/paste-buff.module.css";
 
 const DMG_URL = `${REPO_URL}/releases/latest/download/paste-buff.dmg`;
 
-// Round two of the README benchmark (text-only seed). Footprint in MB.
+// README benchmark, text-only seed. paste-buff 0.4.0 and Maccy are round
+// three (2026-10-24); GPUI, Tauri and Raycast are rounds one and two.
+// Footprint in MB.
 const MEMORY = [
 	{
 		name: "paste-buff",
 		note: "AppKit, 1 process",
-		idle: 14.6,
-		peak: 17.6,
-		after: 17.3,
+		idle: 16.4,
+		peak: 20.3,
+		after: 20.1,
 		ours: true,
 	},
 	{
@@ -25,6 +27,13 @@ const MEMORY = [
 		idle: 30.1,
 		peak: 51.0,
 		after: 45.0,
+	},
+	{
+		name: "Maccy",
+		note: "3 processes",
+		idle: 53.6,
+		peak: 90.8,
+		after: 63.9,
 	},
 	{
 		name: "Same app on Tauri",
@@ -157,7 +166,7 @@ export default function PasteBuff() {
 	return (
 		<>
 			<NextSeo
-				description="paste-buff is a clipboard history for macOS. Press ⌘⇧V, pick anything you copied in the last 24 hours, and it pastes into the app you were using. Native AppKit, about 15 MB of memory."
+				description="paste-buff is a clipboard history for macOS. Press ⌘⇧V, pick anything you copied in the last 24 hours, and it pastes into the app you were using. Native AppKit, about 16 MB of memory."
 				title="paste-buff — Clipboard history for Mac"
 			/>
 
@@ -221,13 +230,13 @@ export default function PasteBuff() {
 					<div className={styles.stats}>
 						<div className={styles.stat}>
 							<span className={styles.statValue}>
-								{"14.6"}
+								{"16.4"}
 								<small>{"MB"}</small>
 							</span>
 							<span className={styles.statLabel}>{"idle footprint"}</span>
 						</div>
 						<div className={styles.stat}>
-							<span className={styles.statValue}>{"8×"}</span>
+							<span className={styles.statValue}>{"7×"}</span>
 							<span className={styles.statLabel}>
 								{"less memory than Raycast"}
 							</span>
